@@ -1,0 +1,264 @@
+
+.main
+  background-color: $indigo
+  position: relative
+  &::before
+    position: absolute
+    content: ''
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    -webkit-clip-path: circle(50% at 100% 51%)
+    clip-path: circle(50% at 100% 51%)
+    background-image: url(../images/main/main-bg.jpg)
+    background-repeat: no-repeat
+    background-position: right center
+    background-size: 100% 100%
+    opacity: .65
+	  
+      
+  &-wrapper 
+    padding: 39px 0px 130px 0px
+    position: relative
+    
+    // &::before
+    //   position: absolute
+    //   content: ''
+    //   top: 0
+    //   left: 0
+    //   width: 100%
+    //   height: 100%
+    //   -webkit-clip-path: circle(50% at 100% 51%)
+    //   clip-path: circle(50% at 100% 51%)
+    //   background-color: $indigo
+     
+    // &::after
+    //   position: absolute
+    //   content: ''
+    //   top: 0
+    //   right: 0
+    //   width: 50%
+    //   height: 50%
+    //   border-radius: 50%
+      // background-color: transparent
+      // background-image: url(../images/main/main-bg.jpg)
+      // background-repeat: no-repeat
+      // background-position: right center
+
+      
+
+    
+
+
+  &-logo 
+    
+    &__logo
+      width: 155px
+      height: 36px
+      display: inline-block
+      img 
+        width: 155px
+        height: 36px
+    &__text
+      display: inline-block
+      // font-family: 'Gilroy-Light', sans-serif
+      font-size: 14px /* Приближение из-за подстановки шрифтов */
+      font-weight: 300
+      vertical-align: top
+      text-align: left
+      margin-left: 25px
+
+  &-contacts 
+    &__email, &__phone
+      font-size: 16px/* Приближение из-за подстановки шрифтов */
+      font-family: 'Gilroy', sans-serif
+      font-weight: 700
+      text-align: right
+      letter-spacing: 2px
+      &-txt 
+        font-size: 14px /* Приближение из-за подстановки шрифтов */
+        font-weight: 300 
+      
+        text-align: right
+
+    &__email
+      margin-top: 5px
+    &__phone
+      font-size: 22px/* Приближение из-за подстановки шрифтов */
+
+  &-txt 
+    padding-top: 145px
+    &__title
+      font-family: Gilroy
+
+      font-size: 31px/* Приближение из-за подстановки шрифтов */
+      font-weight: 700
+
+      text-align: left
+
+    &__subtitle
+      margin-top: 24px
+      margin-bottom: 56px
+      font-family: Gilroy-Light
+      color:  #cfcfcf
+      font-size: 24px/* Приближение из-за подстановки шрифтов */
+      font-weight: 300
+
+      text-align: left
+      span 
+        font-family: Gilroy
+
+    &__pros
+      
+      // display: inline-block
+
+      &-block 
+        margin-bottom: 49px
+        // text-align: left
+
+      
+      
+      &-txt 
+        display: inline-block
+    
+        padding-left: 24px
+        font-family: Gilroy
+        color:  #cfcfcf
+        font-size: 14px/* Приближение из-за подстановки шрифтов */
+        font-weight: 700
+        letter-spacing: 1px
+        text-align: left
+      &-logo
+        // background-color:  #2a2d36
+        width: 2px
+        height: 32px
+        display: inline-block
+      img 
+        vertical-align: top
+
+
+
+  &-products
+    // background-color: $grey
+    &__circle
+      border-radius: 50%
+      background-color: $indigo
+      height: 300px
+      width: 300px
+      margin: 0 auto
+      position: relative
+      img 
+        position: absolute
+        top: 50%
+        left: 50%
+        margin-left: -88px
+        margin-top: -72px
+
+    &__items 
+      text-align: left
+      margin-top: 39px
+      margin-left: 39px
+      font-family: Gilroy
+
+      font-size: 14px/* Приближение из-за подстановки шрифтов */
+      font-weight: 700
+      letter-spacing: 2px
+
+
+
+
+  &-buttons 
+    .button-o
+      margin-left: 20px
+
+  &-caption 
+      margin-top: 136px
+      font-family: Gilroy
+      font-size: 14px/* Приближение из-за подстановки шрифтов */
+      font-weight: 700
+      color: $grey
+      text-align: left
+      letter-spacing: 2px
+
+
+.conditions
+  position: absolute
+  margin-top: 30px
+  width: 100%
+  text-align: center
+  border-radius: 2px
+  background-color:  #2a2d36
+  box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.3)
+  padding: 55px 98px  
+ 
+  &-wrapper
+    position: relative
+  
+  // height: 310px
+
+  &-title
+    margin-bottom: 35px
+    font-family: Gilroy
+    color:  #ffffff
+    font-size: 28px/* Приближение из-за подстановки шрифтов */
+    font-weight: 700
+    letter-spacing: 2px
+    
+  
+
+  &-item
+    position: relative
+    z-index: 0
+    &::before
+      position: absolute
+      content: ''
+      top: 10px
+      left: 50%
+      margin-left: -70px
+      width: 140px
+      height: 140px
+      border-radius: 50%
+      background-color: #282b34
+      z-index: -1
+
+    &__title 
+      margin-bottom: 20px
+      font-family: Gilroy
+  
+      font-size: 18px/* Приближение из-за подстановки шрифтов */
+      font-weight: 700
+      letter-spacing: 2px
+
+    &__number
+      margin-bottom: 29px
+      font-family: Gilroy
+      color:  #0d7ff3
+      font-size: 42px/* Приближение из-за подстановки шрифтов */
+      font-weight: 700
+     
+
+
+    &__text
+      font-family: Gilroy-Light
+      color:  #c9c9cc
+      font-size: 14px/* Приближение из-за подстановки шрифтов */
+      font-weight: 300
+     
+
+  
+
+
+/********************************/
+
+
+
+
+
+
+
+
+
+
+
+
