@@ -1,0 +1,93 @@
+.contact-form
+  padding-top: 87px
+  padding-bottom: 100px
+  background-color: #2a2d36
+  position: relative
+  &::before
+    position: absolute
+    content: ''
+    bottom: 0
+    left: 0
+    width: 100%
+    height: 100%
+    background-color: #282b34
+    -webkit-clip-path: circle(50% at 0 125%)
+    clip-path: circle(50% at 0 125%)
+    
+  .section-title
+    color: $white
+  .section-subtitle 
+    color: #dadada
+    margin-top: 25px
+
+  &__input 
+    margin-top: 47px
+    font-family: Gilroy-Light
+    // color:  #7b7b7b
+    color: $white
+    font-size: 14px/* Приближение из-за подстановки шрифтов */
+    font-weight: 300
+    // background-color: #282b34
+    background-color: transparent
+    text-align: center
+
+    
+    // opacity: 0.1
+    // box-shadow: 0px 5px 29px 0px rgba(40, 145, 251, 0.2)
+    // width: 300px
+    // height: 60px
+    border-width: 2px
+    border-color:  #3b3e46
+    border-style: solid
+    border-radius: 30px
+    padding: 18px 57px
+
+  &__buttons
+    margin-top: 55px
+    button 
+      display: inline-block
+    .button-c
+      margin-right: 20px
+      padding: 20px 87px
+      
+
+    .button-o
+      text-transform: uppercase
+      padding: 20px 70px
+      color: #7b7b7b
+      span 
+        text-transform: none
+
+  &__onright
+    position: absolute
+    bottom: -100px
+    right: 0
+    height: 100%
+    width: 50%
+    &-txt, &-img
+      position: absolute
+      bottom: 0
+      right: 0
+
+    &-txt
+      padding-top: 60px
+      right: 6%
+      width: 284px
+      height: 142px  /* высота в два раза меньше ширины, иначе получится полуовал */
+      // border: 2px solid red
+      border-radius: 50% 50% 0 0 / 100% 100% 0 0  /* угол состоит из половины ширины (50% от 10em = 10em : 2 = 5em) и всей высоты (100% от 5em = 5em) */
+      background-color: #191c23
+      box-shadow: 0px 5px 29px 0px rgba(42, 147, 254, 0.13)
+      font-family: Gilroy-Light
+      color:  $white
+      font-size: 12px/* Приближение из-за подстановки шрифтов */
+      font-weight: 300
+      line-height: 24px/* Приближение из-за подстановки шрифтов */
+      text-align: center
+      // -webkit-clip-path: circle(50% at 50% 100%)
+      // clip-path: circle(50% at 50% 100%)
+
+    &-img 
+
+
+
