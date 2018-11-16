@@ -42,11 +42,11 @@
                   <div class="row">
                     <div class="col-6">
                         <div class="main-contacts__email-txt">Отправьте нам заявку:</div>
-                        <div class="main-contacts__email">pfpgroup@mail.ru </div>
+                        <div class="main-contacts__email"><a href="mailto:pfpgroup@mail.ru">pfpgroup@mail.ru</a></div>
                     </div>
                     <div class="col-6">
                         <div class="main-contacts__phone-txt">Или позвоните:</div>
-                        <div class="main-contacts__phone">+ 7 921 655 03 96</div>
+                        <div class="main-contacts__phone"><a href="tel:89216550396">+ 7 921 655 03 96</a></div>
                     </div>
                   </div>
                   
@@ -217,7 +217,7 @@
           <div class="modal-subtitle">
               Как вам удобнее связаться?
           </div>
-          <input type="text" class="modal-input" placeholder="+ 7 555 55 55 555">
+          <input type="text" class="modal-input" placeholder="+7 (___) ___-__-__">
           <div class="modal-body__buttons">
             <div class="row">
               <div class="col-6 text-right pr-2">
@@ -407,41 +407,44 @@
 
   <section class="project">
     <div class="container">
-      <div class="row">
-        
-        
-        <div class="col-5 my-auto text-left pr-0 pl-0">
-          <div class="project-txt">
-            <div class="section-title">
-                Есть проект или заявка?
-            </div>
-            <div class="section-subtitle">
-                Просто сбросьте файл в окошко справа и мы <br> оперативно сделаем для вас расчет в 3 вариантах.
-            </div>
-            <button class="button button-c">РАССЧИТАТЬ МОЙ ПРОЕКТ</button>
-          </div>
-        </div>
-
-        <div class="col-7 align-top pl-5 pr-0">
-            <div class="project-doc">
-              <div class="project-doc__upload">
-                <div class="project-doc__upload-block">
-                  <!-- <form action=""> -->
-                    <img src="images/tz/folder.svg" alt="ТЗ">
-                    <div class="project-doc__upload-txt">
-                        Только проследите чтобы в документе <br>  были ваши контактные данные
-                    </div>
-                  <!-- </form> -->
+      <form class="project-form" method="post">
+          <div class="row">      
+            <div class="col-5 my-auto text-left pr-0 pl-0">
+              <div class="project-txt">
+                <div class="section-title">
+                    Есть проект или заявка?
                 </div>
-               
-                
+                <div class="section-subtitle">
+                    Просто сбросьте файл в окошко справа и мы <br> оперативно сделаем для вас расчет в 3 вариантах.
+                </div>
+                <button class="button button-c project-form__button" type="submit">РАССЧИТАТЬ МОЙ ПРОЕКТ</button>
               </div>
-              
+            </div>
+    
+            <div class="col-7 align-top pl-5 pr-0">
+                <div class="project-doc">
+                  <div class="project-doc__upload">
+                    <div class="project-doc__upload-block">
+                        <input type="file" name="file" id="file" class="inputfile" />
+                        <label for="file"></label>
+                      
+                        <!-- <img src="images/tz/folder.svg" alt="ТЗ"> -->
+                        <div class="project-doc__upload-txt">
+                            Только проследите чтобы в документе <br>  были ваши контактные данные
+                        </div>
+                        
+                        
+                      
+                    </div>
+                    
+                    
+                  </div>
+                  
+                </div>
             </div>
           </div>
-        
-        
-      </div>
+      </form>
+      
       
   </section>
 
@@ -617,7 +620,7 @@
           <div class="section-title">Закажите выезд инженера На объект:</div>
           <div class="section-subtitle">Вместе выберем наполное покрытие, составим смету <br> и точно обо всем договоримся.</div>
           <form action="">
-              <input type="text" class="contact-form__input" placeholder="+7 921 77 77 777">
+              <input type="text" class="contact-form__input" placeholder="+7 (___) ___-__-__">
             
             </input>
             <div class="contact-form__buttons">
@@ -666,9 +669,9 @@
               <div class="team-img">
                 <img src="images/team/member-1.png" alt="Павел Пискунов">
               </div>
-              <button class="button button-c team-button">
+              <a href="mailto:pfpgroup@mail.ru" class="button button-c team-button">
                 Написать
-              </button>
+              </a>
             </div>
           </div>
           <div class="col-1"></div>
@@ -739,9 +742,9 @@
               <div class="team-img">
                 <img src="images/team/member-2.png" alt="Мищененко Елена">
               </div>
-              <button class="button button-c team-button">
+              <a href="mailto:e.m_profpolimer@mail.ru" class="button button-c team-button">
                 Написать
-              </button>
+              </a>
             </div>
           </div>
         </div>
@@ -752,9 +755,9 @@
                 <div class="team-img">
                   <img src="images/team/member-3.png" alt="Родионов Сергей">
                 </div>
-                <button class="button button-c team-button">
+                <a href="mailto:s.r_profpolimer@mail.ru" class="button button-c team-button">
                   Написать
-                </button>
+                </a>
               </div>
             </div>
             <div class="col-1"></div>
@@ -927,7 +930,7 @@
             <div class="row">
               <div class="col-10 text-left">
                 <div class="section-title">Получите прайс-лист <br>для самостоятельного расчета</div>
-                <div class="section-subtitle">За счет большого объема закупок реальная цена, по которой  мы можем поставлять материалы, ниже рыночной на 5%.</div>
+                <div class="section-subtitle">За счет большого объема закупок реальная цена, по которой <br> мы можем поставлять материалы, ниже рыночной на 5%.</div>
                 <div class="pricelist-form__buttons">
                   <button class="button button-o">
                     E-mail
@@ -977,7 +980,7 @@
                   <div class="col-2 text-left">
                       <img src="images/map/phone.png" alt="">
                   </div>
-                  <div class="col-10 text-left">+ 7 921 655 03 96</div>
+                  <div class="col-10 text-left"><a href="tel:89216550396">+ 7 921 655 03 96</a></div>
                 </div>
           </div>
           <div class="map-email">
@@ -985,7 +988,7 @@
                   <div class="col-2 text-left">
                       <img src="images/map/email.png" alt="">
                   </div>
-                  <div class="col-10 text-left">pfpgroup@mail.ru</div>
+                  <div class="col-10 text-left"> <a href="mailto:pfpgroup@mail.ru">pfpgroup@mail.ru</a></div>
                 </div>
           </div>
         </div>
@@ -1016,7 +1019,7 @@
             </div>
               
             <div class="footer-info__txt">
-              Email: 6550396@mail.ru
+              Email: <a href="mailto:pfpgroup@mail.ru">pfpgroup@mail.ru</a>
             </div>
             <div class="footer-info__txt">
               Р/счет 40702810703000031659
@@ -1046,7 +1049,7 @@
               Политика конфиденциальности
           </div>
           <div class="footer-link">
-            Сделано в студии <span>london</span>
+            Сделано в студии <a href="">london</a href="">
           </div>
           
 
@@ -1054,7 +1057,8 @@
         <div class="col-6 text-right align-top pr-0">
           <div class="footer-img">
             <img src="images/footer/blank.png" alt="">
-            <button class="button button-c">СКАЧАТЬ БЛАНК ДОГОВОРА</button>
+            <a href="docs/Dogovor_PFP.pdf" download class="button button-c">СКАЧАТЬ БЛАНК ДОГОВОРА</a>
+            
           </div>
 
         </div>
@@ -1071,8 +1075,13 @@
 
 <script>window.jQuery || document.write('<script src="js/jquery-3.3.1.min.js"><\/script>')</script>
 
+
+
 <!-- Bootstrap v4 -->
 <script src="js/bootstrap.min.js"></script>
+
+<!-- jQuery mask for phone inputs -->
+<script src="js/jquery.maskedinput.min.js"></script>
 
 <!-- Custom script -->
 <script src="js/custom.js"></script>
