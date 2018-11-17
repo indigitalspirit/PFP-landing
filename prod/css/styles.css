@@ -44,15 +44,11 @@ body li {
   color: #ffffff;
   text-transform: uppercase;
   border-radius: 30px;
-  -webkit-box-shadow: 0px 5px 29px 0px rgba(40, 145, 251, 0.2);
-          box-shadow: 0px 5px 29px 0px rgba(40, 145, 251, 0.2);
 }
 
 .button-c {
-  background: -webkit-gradient(linear, left bottom, left top, from(#2a93fe), to(#0076ee));
-  background: linear-gradient(0deg, #2a93fe 0%, #0076ee 100%);
+  background-color: #2a93fe;
   padding: 20px 65px;
-  border: 1px #2a93fe solid;
 }
 
 .button-o {
@@ -206,6 +202,10 @@ body li {
   margin-left: 25px;
 }
 
+.main-contacts a {
+  color: #ffffff;
+}
+
 .main-contacts__email, .main-contacts__phone {
   font-size: 16px;
   font-family: 'Gilroy', sans-serif;
@@ -303,6 +303,14 @@ body li {
   font-size: 14px;
   font-weight: 700;
   letter-spacing: 2px;
+}
+
+.main-products__items li {
+  margin-top: 15px;
+}
+
+.main-buttons {
+  margin-top: 59px;
 }
 
 .main-buttons .button-o {
@@ -411,8 +419,6 @@ body li {
 .prices-conditions__item-circle {
   border-radius: 50%;
   background-color: #228efb;
-  -webkit-box-shadow: 0px 5px 29px 0px rgba(40, 145, 251, 0.3);
-          box-shadow: 0px 5px 29px 0px rgba(40, 145, 251, 0.3);
   width: 200px;
   height: 200px;
   margin: 0 auto;
@@ -610,7 +616,7 @@ body li {
   margin-top: 7px;
   border: none;
   background-color: transparent;
-  font-family: Gilroy-Light;
+  font-family: Gilroy;
   color: #2a2d36;
   font-size: 16px;
   font-weight: 700;
@@ -685,8 +691,6 @@ body li {
   font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
-  -webkit-box-shadow: 0px 5px 29px 0px rgba(40, 145, 251, 0.4);
-          box-shadow: 0px 5px 29px 0px rgba(40, 145, 251, 0.4);
 }
 
 .project {
@@ -747,6 +751,45 @@ body li {
   z-index: -1;
 }
 
+.project-doc__upload-block input.inputfile {
+  width: 300px;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+  margin-top: 260px;
+  margin-left: -120px;
+}
+
+.project-doc__upload-block input.inputfile::before {
+  position: absolute;
+  content: '';
+  width: 120px;
+  height: 100%;
+  background-color: #f5f5f5;
+  left: 0;
+  top: 0;
+}
+
+.project-doc__upload-block .inputfile + label {
+  font-size: 1.25em;
+  font-weight: 700;
+  color: white;
+  background-color: transparent;
+  background-image: url(../images/tz/folder.svg);
+  background-position: center center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  width: 120px;
+  height: 102px;
+  display: inline-block;
+  margin-top: 166px;
+}
+
+.project-doc__upload-block .inputfile:focus + label,
+.project-doc__upload-block .inputfile + label:hover {
+  cursor: pointer;
+}
+
 .project-doc__upload-txt, .project-doc__upload img {
   position: unset;
   bottom: unset;
@@ -754,7 +797,7 @@ body li {
 }
 
 .project-doc__upload-txt {
-  margin-top: 35px;
+  margin-top: 10px;
   color: #656565;
   font-size: 14px;
   font-weight: 300;
@@ -766,12 +809,6 @@ body li {
   content: none;
 }
 
-.project-doc__upload img {
-  margin-top: 166px;
-  width: 120px;
-  height: 102px;
-}
-
 .personal {
   padding-top: 91px;
   padding-bottom: 94px;
@@ -781,6 +818,18 @@ body li {
   background-repeat: no-repeat;
   background-position: top right;
   background-size: 60% 78%;
+}
+
+.personal::before {
+  position: absolute;
+  content: '';
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 95%;
+  background-color: #1b1e25;
+  -webkit-clip-path: circle(50% at 22% 98%);
+  clip-path: circle(50% at 8% 98%);
 }
 
 .personal .section-title {
@@ -860,7 +909,7 @@ body li {
 .about::before {
   position: absolute;
   content: '';
-  top: 0;
+  top: 2%;
   left: 0;
   width: 100%;
   height: 100%;
@@ -917,6 +966,7 @@ body li {
 }
 
 .contact-form {
+  margin-top: 170px;
   padding-top: 87px;
   padding-bottom: 100px;
   background-color: #2a2d36;
@@ -1104,6 +1154,18 @@ body li {
   background-size: 60% 78%;
 }
 
+.floors::before {
+  position: absolute;
+  content: '';
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 109%;
+  background-color: #1b1e25;
+  -webkit-clip-path: circle(50% at 22% 98%);
+  clip-path: circle(50% at 6% 98%);
+}
+
 .floors .section-title {
   line-height: 32px;
   color: #ffffff;
@@ -1113,7 +1175,7 @@ body li {
 .floors-txt {
   margin-top: 63px;
   font-family: Gilroy-Light;
-  color: #dadada;
+  color: #ffffff;
   font-size: 14px;
   font-weight: 300;
   line-height: 24px;
@@ -1312,10 +1374,11 @@ body li {
   height: 119%;
   padding: 60px 50px;
   text-align: center;
+  z-index: 1;
 }
 
 .pricelist-form__logos img {
-  margin-bottom: 38px;
+  margin-bottom: 46px;
 }
 
 .map {
@@ -1344,6 +1407,10 @@ body li {
   font-weight: 700;
   margin-bottom: 40px;
   line-height: 24px;
+}
+
+.map-address a, .map-phone a, .map-email a {
+  color: #2a2d36;
 }
 
 .map-address img, .map-phone img, .map-email img {
@@ -1399,9 +1466,8 @@ body li {
   margin-top: 20px;
 }
 
-.footer-link span {
+.footer-link a {
   color: #2a93fe;
-  text-decoration: underline;
 }
 
 .footer-img {
@@ -1417,10 +1483,86 @@ body li {
   width: 100%;
 }
 
-.footer-img button {
+.footer-img .button {
   padding: 22px 60px;
   position: absolute;
   top: 50%;
   left: 20%;
+}
+
+@media (min-width: 758px) {
+  .button:hover {
+    -webkit-box-shadow: 0px 5px 29px 0px rgba(40, 145, 251, 0.4);
+            box-shadow: 0px 5px 29px 0px rgba(40, 145, 251, 0.4);
+    cursor: pointer;
+    -webkit-transition: -webkit-box-shadow .3s;
+    transition: -webkit-box-shadow .3s;
+    transition: box-shadow .3s;
+    transition: box-shadow .3s, -webkit-box-shadow .3s;
+  }
+  .button-c:hover {
+    cursor: pointer;
+    -webkit-box-shadow: 0px 5px 29px 0px rgba(40, 145, 251, 0.4);
+            box-shadow: 0px 5px 29px 0px rgba(40, 145, 251, 0.4);
+    -webkit-transition: -webkit-box-shadow .3s;
+    transition: -webkit-box-shadow .3s;
+    transition: box-shadow .3s;
+    transition: box-shadow .3s, -webkit-box-shadow .3s;
+  }
+  .main-contacts__email a:hover, .main-contacts__phone a:hover {
+    color: #2a93fe;
+  }
+  .prices-conditions__item-circle:hover {
+    cursor: pointer;
+    -webkit-box-shadow: 0px 5px 29px 0px rgba(40, 145, 251, 0.55);
+            box-shadow: 0px 5px 29px 0px rgba(40, 145, 251, 0.55);
+    -webkit-transition: -webkit-box-shadow .3s;
+    transition: -webkit-box-shadow .3s;
+    transition: box-shadow .3s;
+    transition: box-shadow .3s, -webkit-box-shadow .3s;
+  }
+  .prices-conditions__item-txt:hover {
+    cursor: pointer;
+    color: #2a93fe;
+    -webkit-transition: color .3s;
+    transition: color .3s;
+  }
+  .team-button:hover {
+    color: #ffffff;
+  }
+  .floors-features li:hover {
+    background-color: #2a93fe;
+    -webkit-box-shadow: 0px 5px 29px 0px rgba(40, 145, 251, 0.35);
+            box-shadow: 0px 5px 29px 0px rgba(40, 145, 251, 0.35);
+    padding: 10px 0px;
+    color: #ffffff;
+    font-weight: 400;
+    text-align: center;
+    cursor: pointer;
+    -webkit-transition: color, text-align, padding .3s, -webkit-box-shadow;
+    transition: color, text-align, padding .3s, -webkit-box-shadow;
+    transition: color, text-align, box-shadow, padding .3s;
+    transition: color, text-align, box-shadow, padding .3s, -webkit-box-shadow;
+  }
+  .map-address a:hover, .map-phone a:hover, .map-email a:hover {
+    color: #2a93fe;
+    -webkit-transition: color .3;
+    transition: color .3;
+  }
+  .footer-link a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+    -webkit-transition: color .3;
+    transition: color .3;
+  }
+  .footer-politics:hover {
+    color: #191c23;
+    cursor: pointer;
+    -webkit-transition: color .3;
+    transition: color .3;
+  }
+  .footer-img a:hover {
+    color: #ffffff;
+  }
 }
 /*# sourceMappingURL=styles.css.map */

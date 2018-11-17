@@ -1,11 +1,26 @@
 .floors
-  padding: 100px 0px
+  padding: 100px 0px 60px 0px
   position: relative
-  background-color: $indigo
-  background-image: url(../images/floors/floors-img.png)
+  background-color: #191c23
+  background-image: url(../images/floors/floors-oil.png)
   background-repeat: no-repeat
   background-position: top right
   background-size: 60% 78%
+  transition: background-image .3s
+  &::before 
+    position: absolute
+    content: ''
+    bottom: 0
+    left: 0
+    width: 100%
+    height: 109%
+    // width: 60%
+    // height: 170%
+    background-color: #1b1e25
+    // -webkit-clip-path: circle(55% at 0 105%)
+    // clip-path: circle(55% at 0 105%)
+    -webkit-clip-path: circle(50% at 22% 98%)
+    clip-path: circle(50% at 6% 98%)
 
   .section
     &-title
@@ -16,9 +31,10 @@
     
 
   &-txt
-    margin-top: 63px
+    height: 200px
+    margin-top: 10px
     font-family: Gilroy-Light
-    color:  #dadada
+    color:  $white
     font-size: 14px/* Приближение из-за подстановки шрифтов */
     font-weight: 300
     line-height: 24px/* Приближение из-за подстановки шрифтов */
@@ -26,18 +42,41 @@
   &-features
     margin-top: 44px
     color: #dadada
-    ul 
-      
+    
+    &__list 
       padding-left: 0
       li
+        display: inline
         width: 240px
-        border-radius: 30px
+        
         height: 40px
-        font-family: Gilroy-Light
-        font-size: 16px/* Приближение из-за подстановки шрифтов */
-        font-weight: 300
+        
         margin-bottom: 43px
-        color:  #cfcfcf
+        margin-right: 30px
+        
+        a.nav-link 
+          font-family: Gilroy-Light
+          font-size: 16px/* Приближение из-за подстановки шрифтов */
+          font-weight: 300
+          color:  #cfcfcf
+          border-radius: 30px
+          padding-left: 0px
+
+        a.active 
+          text-align: center
+          padding: 10px 0px
+          background-color:  #2a93fe
+          box-shadow: 0px 5px 29px 0px rgba(40, 145, 251, 0.35)
+          // padding: 10px 0px
+         
+          color: $white
+          font-weight: 400
+         
+          cursor: pointer
+          
+
+
+        
 
 
     

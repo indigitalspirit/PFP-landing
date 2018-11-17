@@ -10,7 +10,7 @@
 
   <title>PFP</title>
 
-  <link rel="icon" href="img/favicon.ico">
+  <link rel="icon" href="images/favicon.ico">
 
   <!-- Bootstrap v4 -->
   <link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap.min.css" />
@@ -30,7 +30,7 @@
               <div class="col-6 text-left">
                 <div class="main-logo">
                   <div class="main-logo__logo">
-                    <img src="images/logo.png" alt="PFP">
+                  <a href="index.html"><img src="images/logo.png" alt="PFP"></a>  
                   </div>
                   <div class="main-logo__text">ООО «ПроФПолимер <br> групп»</div>
                 </div>
@@ -94,6 +94,17 @@
                         <div class="col-3"></div>
               
                     </div>
+                    <div class="row">
+                      <div class="col-12 text-left">
+                        <div class="main-buttons">
+                          <button class="button button-c">РАСЧЕТ СТОИМОСТИ</button>
+                          <button class="button button-o" data-toggle="modal" data-target="#mainModal">КОНСУЛЬТАЦИЯ</button>
+                        </div>
+                        <div class="main-caption">
+                            Производство и монтаж промышленных полимерных полов
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div class="col-4  ">
@@ -123,13 +134,7 @@
       
             <div class="row">
               <div class="col-12 text-left">
-                  <div class="main-buttons">
-                      <button class="button button-c">РАСЧЕТ СТОИМОСТИ</button>
-                      <button class="button button-o" data-toggle="modal" data-target="#mainModal">КОНСУЛЬТАЦИЯ</button>
-                    </div>
-                    <div class="main-caption">
-                        Производство и монтаж промышленных полимерных полов
-                    </div>
+                  
               </div>
                 
       
@@ -326,8 +331,8 @@
                         <label for="input_select" class="select">
                           Материал покрытия
                         </label>
-                    
-                        <select name="theme" class="input_select" id="input_select">
+                        <div class="calculations-form__select-wrapper">
+                          <select name="theme" class="input_select" id="input_select">
                             <option value="light">бетонные</option>
                             <option value="dark">эпоксидные</option>
                             <option value="light">полиуретановые</option>
@@ -337,6 +342,8 @@
                             <option value="light">полимерные краски</option>
                             
                         </select>
+                        </div>
+                        
                     </div>
                 </div>
                 <div class="col-3">
@@ -344,7 +351,7 @@
                         <label for="input_time" class="time">
                           Сколько есть времени:
                         </label>
-                        <input type="text" value="2 месяца" id="input_time" name="time"/>
+                        <input type="text" placeholder="2 месяца" id="input_time" name="time"/>
                     </div>
                 </div>
                 <div class="col-6 text-right">
@@ -798,26 +805,59 @@
   <section class="floors">
     <div class="container">
       <div class="row">
-          <div class="col-5 text-left">
+          <div class="col-6 text-left">
               <div class="section-title">
-                  Где и почему используют полимерные полы:
+                  Где и почему используют <br> полимерные полы:
               </div>
+              
+              
               <div class="floors-features">
+                
+                  
                 <div class="row">
-                  <div class="col-6">
-                    <ul>
-                      <li>Нефтегазовая отрасль</li>
-                      <li>Сельское хозяйство</li>
-                      <li>Пищевая промышленность</li>
-                    </ul>
+                  <div class="col-12 pr-0">
+                      <ul class="nav nav-pills mb-3 floors-features__list" id="pills-tab" role="tablist">
+                        <!-- <div class="row">
+                          <div class="col-6"> -->
+                              <li class="nav-item">
+                                <a class="nav-link active" id="floors-oil-tab" data-toggle="pill" href="#floors-oil" role="tab" aria-controls="floors-oil" aria-selected="true">Нефтегазовая отрасль</a>
+                              </li>
+                              <li class="nav-item">
+                                  <a class="nav-link" id="floors-chemistry-tab" data-toggle="pill" href="#floors-chemistry" role="tab" aria-controls="floors-chemistry" aria-selected="false">Химическая отрасль</a>
+                                </li>
+                              <li class="nav-item">
+                                <a class="nav-link" id="floors-farm-tab" data-toggle="pill" href="#floors-farm" role="tab" aria-controls="floors-farm" aria-selected="false">Сельское хозяйство</a>
+                              </li>
+                              <li class="nav-item">
+                                  <a class="nav-link" id="floors-drugs-tab" data-toggle="pill" href="#floors-drugs" role="tab" aria-controls="floors-drugs" aria-selected="false">Фармацевтика</a>
+                                </li>
+                              <li class="nav-item">
+                                <a class="nav-link" id="floors-food-tab" data-toggle="pill" href="#floors-food" role="tab" aria-controls="floors-food" aria-selected="false">Пищевая промышленность</a>
+                              </li>
+                          <!-- </div>
+                          <div class="col-6"> -->
+                              
+                              
+                              <li class="nav-item">
+                                <a class="nav-link" id="floors-logs-tab" data-toggle="pill" href="#floors-logs" role="tab" aria-controls="floors-logs" aria-selected="false">Склады и логистика</a>
+                              </li>
+                            <!-- </div>
+                        </div> -->
+                          
+                        </ul>
+                    <!-- <ul>
+                      <li id="floors-oil">Нефтегазовая отрасль</li>
+                      <li id="floors-farm">Сельское хозяйство</li>
+                      <li id="floors-food">Пищевая промышленность</li>
+                    </ul> -->
                   </div>
-                  <div class="col-6">
+                  <!-- <div class="col-6 pl-4">
                     <ul>
-                      <li>Химическая отрасль</li>
+                      <li id="floors-chemistry">Химическая отрасль</li>
                       <li>Фармацевтика</li>
                       <li>Склады и логистика</li>
                     </ul>
-                  </div>
+                  </div> -->
                 </div>
               </div>
               
@@ -828,9 +868,39 @@
       </div>
       <div class="row">
         <div class="col-12 text-left">
-            <div class="floors-txt">
-              В сельско-хозяйственном секторе к напольным покрытиям предъявляются <br> особые санитарно-гигиенические требования. Полы должны быть сплошными, <br>  прочными, шероховатыми, ровными, водонепроницаемыми, устойчивыми <br>  к воздействию дезинфицирующих составов и продуктов жизнедеятельности <br>  животных и удобным для проведения эффективной уборки. От напольного <br>  покрытия во многом зависит микроклимат и гигиена помещений, <br>  а следовательно чистота.
-            </div>
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="floors-oil" role="tabpanel" aria-labelledby="floors-oil-tab">
+                  <div class="floors-txt">
+                      Для нефтегазовой отрасли производителями полимерных покрытий <br> были разработаны токопроводящие (антистатические и безискровые) системы <br>  укладки пола. Помимо всех прочностных характеристик полимерного пола такая <br> система сильно способствует повышенной пожаробезопасности, что является <br> обязательным условием на нефтегазовых предприятиях и предприятиях <br> химической промышленности и здоровья животных.
+                    </div>
+                </div>
+                <div class="tab-pane fade " id="floors-farm" role="tabpanel" aria-labelledby="floors-farm-tab">
+                  <div class="floors-txt">
+                    В сельско-хозяйственном секторе к напольным покрытиям предъявляются <br> особые санитарно-гигиенические требования. Полы должны быть сплошными, <br>  прочными, шероховатыми, ровными, водонепроницаемыми, устойчивыми <br>  к воздействию дезинфицирующих составов и продуктов жизнедеятельности <br>  животных и удобным для проведения эффективной уборки. От напольного <br>  покрытия во многом зависит микроклимат и гигиена помещений, <br>  а следовательно чистота.
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="floors-food" role="tabpanel" aria-labelledby="floors-food-tab">
+                  <div class="floors-txt">
+                    Напольные покрытия из полимеров обладают уникальными бактерицидными и <br> гигиеническими свойствами, которые полностью соответствуют высоким <br> санитарно-гигиеническим и эксплуатационным требованиям, предъявляемым <br> предприятияи пищевой промышленности: отсутствие швов, гигиеничность <br> отсутствие пыли, устойчивость к химии, влагостойкость и простота уборки.
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="floors-chemistry" role="tabpanel" aria-labelledby="floors-chemistry-tab">
+                  <div class="floors-txt">
+                    Полы в химической промышленности подвергаются воздействию особого рода. <br> Прежде всего, на покрытия попадают агрессивные вещества - кислоты, щелочи,  <br>  органические соединения. Кроме того, в цехах химической промышленности <br> присутствуют и характерные для других сфер промышленности нагрузки <br> - механические воздействия (вес оборудования, передвижение людей <br>   и техники), температурные перепады, УФ-излучение и т.д.
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="floors-drugs" role="tabpanel" aria-labelledby="floors-drugs-tab">
+                    <div class="floors-txt">
+                        Полы на фармацевтических предприятиях должны быть ровными, гладкими, <br> бесшовныи, обладать высокой механической прочностью и износостойкостью. <br> Кроме того, покрытие должно выдерживать химические нагрузки, легко <br> убираться и обеззораживаться. В ряде помещений необходимо устройство  <br> полов с антистатическими свойствами.
+                      </div>
+                </div>
+                <div class="tab-pane fade" id="floors-logs" role="tabpanel" aria-labelledby="floors-logs-tab">
+                  <div class="floors-txt">
+                    Специально под узконаправленные требования складских помещений <br> производителями полимерных напольных покрытий были разработаны системы <br> способные выдерживать самые разные типы нагрузок: легкие, средние, тяжелые <br> и верхтяжелые нагрузки. Учтена так же возможность реализации полимерного <br> покрытия с особыми требованиями к взрыво-пожаро-безопасности <br> и химической устойчивости.
+                  </div>
+                </div>
+              </div>
+            
         </div>
 
       </div>

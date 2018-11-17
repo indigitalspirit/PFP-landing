@@ -186,16 +186,64 @@
 
     label.select 
       // margin-top: 81px
-    select
-      display: block
-      margin-top: 7px
-      border: none
-      background-color: transparent
-      font-family: Gilroy-Light
-      color:  #2a2d36
-      font-size: 16px/* Приближение из-за подстановки шрифтов */
-      font-weight: 700
-      text-align: left
+    &__select 
+      &-wrapper 
+        border: none
+        // width: 120px
+        border-radius: 3px
+        overflow: hidden
+        background: #f5f5f5 url(../images/form/arrow.png) no-repeat 65% 10%
+        select
+          
+          // display: block
+          
+          margin-top: 7px
+          // border: none
+          // background-color: transparent
+          // font-family: Gilroy
+          // color:  #2a2d36
+          // font-size: 16px/* Приближение из-за подстановки шрифтов */
+          // font-weight: 700
+          // text-align: left
+
+
+          // border: 1px solid #ccc
+          // width: 120px
+          // border-radius: 3px
+          // overflow: hidden
+          // background: #fafafa url("img/icon-select.png") no-repeat 90% 50%
+          padding: 5px 8px
+          width: 100%
+          border: none
+          box-shadow: none
+          background-color: transparent
+          background-image: none
+          -webkit-appearance: none
+          font-family: Gilroy
+          color:  #2a2d36
+          font-size: 16px/* Приближение из-за подстановки шрифтов */
+          font-weight: 700
+          text-align: left
+
+
+          &:focus 
+            outline: none
+            background-color: $blue
+            color: $white
+          &:active 
+            // background-color: transparent
+          &:focus-within
+            color: black
+            // background-color: transparent
+          
+          &:visited
+            color: black
+            // background-color: transparent
+
+          
+
+
+    
       
 
     
