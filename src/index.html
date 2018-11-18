@@ -19,6 +19,8 @@
   <!-- Custom styles -->
   <link rel="stylesheet" type="text/css" media="screen" href="css/styles.css" />
 
+  
+
 </head>
 <body>
 
@@ -314,6 +316,71 @@
     </div>
   </section>
 
+  <!-- Main Modal -->
+  <div class="modal fade" id="calcModal" tabindex="-1" role="dialog" aria-labelledby="calcModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="content">
+            <div class="modal-header">
+              
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+          
+          <div class="modal-body">
+            <div class="modal-regular">
+                <div class="modal-title">
+                    Потребуется уточнить <br> несколько параметров
+                </div>
+                <div class="modal-subtitle">
+                    Как вам удобнее связаться?
+                </div>
+                <form action="" method="post" id="calcForm">
+                    <label for="user_phone" class="user_phone">Введите номер телефона</label>
+                    <input type="text" class="modal-input" name="user_phone" placeholder="+7 (___) ___-__-__">
+                    <div class="modal-body__buttons">
+                      <div class="row">
+                        <div class="col-6 text-right pr-2">
+                          <button class="button button-c calcModal__call" type="submit">Позвонить</button>
+                        </div>
+                        <div class="col-6 text-left pl-2">
+                          <button class="button button-o calcModal__whatsapp" type="submit">НАПИСАТЬ В <span>WhatsApp</span></button>
+          
+                        </div>
+                      </div>
+                        
+                      </div>
+                </form>
+            </div>
+  
+          </div>
+        </div>
+      
+        <div class="content__sent">
+            <div class="modal-header">
+                
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+          
+          <div class="modal-body">
+            <div class="modal-sent">
+                <div class="modal-title">
+                    Спасибо за завку!
+                </div>
+                <div class="modal-subtitle">
+                    Мы свяжемся с Вами <br> в ближайшее время.
+                </div>
+            </div>
+          </div>
+
+        </div>
+    </div>
+    </div>
+  </div>
+
   <section class="calculations">
     <div class="container">
       <div class="row">
@@ -325,13 +392,14 @@
                 Впишите параметры, которые вам известны И понятны, остальные поля оставьте пустыми
             </div>
           
-          <form class="calculations-form">
+          <form class="calculations-form" id="calc-form" method="post">
             
-            <div class="calculations-form__baget">
+            <div class="calculations-form__square">
               <label for="input_square" class="square">
                 Площадь по полу:
               </label> 
-              <input type="range" list="volsettings" max="200" step="1" min="0" max="100" value="0" id="input_square" name="square"/>
+              <input type="range" list="volsettings"  step="10" min="0" max="40000" value="0" id="input_square" name="square" data-thumbwidth="10"/>
+              <output name="rangeVal" class="calculations-form__square-output square">0</output>
               <!-- <datalist id=volsettings>
                   <option value="0"/>
                   <option value="20"/>
@@ -342,12 +410,12 @@
               </datalist> -->
             </div>
 
-            <div class="calculations-form__square">
+            <div class="calculations-form__baget">
               <label for="input_baget" class="baget">
                 Доступный бюджет:
               </label>
-              <input type="range" step="1"  value="0" id="input_baget" name="baget"/>
-
+              <input type="range" step="5" min="30000" max="10000000" value="0" id="input_baget" name="baget" data-thumbwidth="5"/>
+              <output name="rangeVal" class="calculations-form__baget-output baget">30 000</output>
             </div>
 
             <div class="calculations-form__footer">
@@ -358,14 +426,14 @@
                           Материал покрытия
                         </label>
                         <div class="calculations-form__select-wrapper">
-                          <select name="theme" class="input_select" id="input_select">
-                            <option value="light">бетонные</option>
-                            <option value="dark">эпоксидные</option>
-                            <option value="light">полиуретановые</option>
-                            <option value="dark">высоконаполненные</option>
-                            <option value="light">химстойкие</option>
-                            <option value="dark">полимербетон</option>
-                            <option value="light">полимерные краски</option>
+                          <select name="material" class="input_select" id="input_material" value="бетонные">
+                            <option>бетонные</option>
+                            <option>эпоксидные</option>
+                            <option>полиуретановые</option>
+                            <option>высоконаполненные</option>
+                            <option>химстойкие</option>
+                            <option>полимербетон</option>
+                            <option>полимерные краски</option>
                             
                         </select>
                         </div>
@@ -382,9 +450,9 @@
                 </div>
                 <div class="col-6 text-right">
                     <div class="calculations-form__button">
-                        <button class="button button-c" >
+                        <a class="button button-c calc-form__button" data-toggle="modal" data-target="#calcModal">
                           Рассчитать мой проект
-                        </button>
+                        </a>
         
                       </div>
                 </div>
@@ -611,9 +679,6 @@
       
   </section>
 
-
-
- 
 
   <section class="personal">
     <form action="">
@@ -1951,6 +2016,10 @@
     </div>
   </footer>
 
+
+
+  
+
   <!-- Yandex.Metrika counter -->
   <!-- <script type="text/javascript" >
     (function (d, w, c) {
@@ -1996,7 +2065,6 @@
 <script>window.jQuery || document.write('<script src="js/jquery-3.3.1.min.js"><\/script>')</script>
 
 
-
 <!-- Bootstrap v4 -->
 <script src="js/bootstrap.min.js"></script>
 
@@ -2005,7 +2073,9 @@
 
 <!-- Custom script -->
 <script src="js/custom.js"></script>
+<script src="js/ranges.js"></script>
 
+  
 <!-- <script>
 ymaps.ready(function () {
     var myMap = new ymaps.Map('map', {

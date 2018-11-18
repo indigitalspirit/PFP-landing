@@ -523,6 +523,7 @@ body li {
 
 .calculations-form__button .button {
   padding: 20px 55px;
+  display: inline-block;
 }
 
 .calculations-form__square input, .calculations-form__baget input, .calculations-form__square label, .calculations-form__baget label, .calculations-form__time label, .calculations-form__time input {
@@ -548,15 +549,22 @@ body li {
   font-weight: 700;
 }
 
+.calculations-form__square, .calculations-form__baget {
+  position: relative;
+}
+
 .calculations-form__square input, .calculations-form__baget input {
   width: 100%;
   margin-top: 25px;
   background-color: #e5e5e5;
+  position: relative;
 }
 
 .calculations-form__square input[type="range"], .calculations-form__baget input[type="range"] {
   -webkit-appearance: none;
   width: 100%;
+  display: block;
+  outline: none;
 }
 
 .calculations-form__square input[type="range"]:focus, .calculations-form__baget input[type="range"]:focus {
@@ -648,7 +656,23 @@ body li {
   background: #367ebd;
 }
 
-.calculations-form__square {
+.calculations-form__square-output, .calculations-form__baget-output {
+  position: absolute;
+  top: 52px;
+  /* display: none */
+  width: 50px;
+  height: 24px;
+  /* border: 1px solid #e2e2e2 */
+  background-color: transparent;
+  /* border-radius: 3px */
+  color: #000000;
+  font-family: Gilroy;
+  font-size: 14px;
+  line-height: 24px;
+  text-align: center;
+}
+
+.calculations-form__baget {
   margin-top: 81px;
 }
 
@@ -678,7 +702,6 @@ body li {
 
 .calculations-form__select-wrapper select:focus {
   outline: none;
-  background-color: #2a93fe;
   color: #ffffff;
 }
 

@@ -102,7 +102,7 @@ body li {
   display: none;
 }
 
-.modal-content .content__sent::before {
+.modal-content .content__sent::before, .modal-content .success::before {
   position: absolute;
   content: '';
   bottom: 0;
@@ -115,12 +115,12 @@ body li {
   background-size: 100% 100%;
 }
 
-.modal-content .content__sent .modal-sent {
+.modal-content .content__sent .modal-sent, .modal-content .success .modal-sent {
   padding-bottom: 230px;
   background-color: transparent;
 }
 
-.modal-content .content__sent .modal-sent .modal-title {
+.modal-content .content__sent .modal-sent .modal-title, .modal-content .success .modal-sent .modal-title {
   margin-top: 40px;
 }
 
@@ -1027,7 +1027,6 @@ body li {
 
 .personal-features .col-6:first-child img {
   -webkit-transform: rotate(90deg);
-          -ms-transform: rotate(90deg);
           transform: rotate(90deg);
 }
 
@@ -1131,17 +1130,25 @@ body li {
   clip-path: circle(50% at 0 125%);
 }
 
+.contact-form label {
+  display: block;
+  color: transparent;
+  margin-top: 20px;
+  font-size: 14px;
+  font-weight: 300;
+  padding-left: 20px;
+}
+
 .contact-form .section-title {
   color: #ffffff;
 }
 
 .contact-form .section-subtitle {
   color: #dadada;
-  margin-top: 25px;
+  margin-top: 20px;
 }
 
 .contact-form__input {
-  margin-top: 47px;
   font-family: Gilroy-Light;
   color: #ffffff;
   font-size: 14px;
@@ -1299,7 +1306,6 @@ body li {
   background-position: top right;
   background-size: 60% 78%;
   -webkit-transition: background-image .3s;
-  -o-transition: background-image .3s;
   transition: background-image .3s;
 }
 
@@ -1385,7 +1391,6 @@ body li {
   -webkit-clip-path: circle(50% at 50% 100%);
   clip-path: circle(50% at 50% 100%);
   -webkit-transform: rotate(180deg);
-          -ms-transform: rotate(180deg);
           transform: rotate(180deg);
 }
 
@@ -1512,12 +1517,32 @@ body li {
 }
 
 .pricelist-form__buttons {
-  margin-top: 63px;
+  margin-top: 50px;
   margin-bottom: 140px;
 }
 
-.pricelist-form__buttons .button-o {
-  padding: 20px 120px;
+.pricelist-form__buttons label {
+  display: block;
+  color: transparent;
+  font-size: 14px;
+  font-weight: 300;
+  padding-left: 20px;
+}
+
+.pricelist-form__buttons .input_email {
+  padding: 20px 25px;
+  font-family: Gilroy;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #ffffff;
+  text-align: center;
+  border-radius: 30px;
+  background-color: transparent;
+  width: 300px;
+  border-width: 2px;
+  border-color: #2a93fe;
+  border-style: solid;
 }
 
 .pricelist-form__buttons .button-c {
@@ -1675,7 +1700,6 @@ body li {
     cursor: pointer;
     -webkit-transition: -webkit-box-shadow .3s;
     transition: -webkit-box-shadow .3s;
-    -o-transition: box-shadow .3s;
     transition: box-shadow .3s;
     transition: box-shadow .3s, -webkit-box-shadow .3s;
   }
@@ -1685,7 +1709,6 @@ body li {
             box-shadow: 0px 5px 29px 0px rgba(40, 145, 251, 0.4);
     -webkit-transition: -webkit-box-shadow .3s;
     transition: -webkit-box-shadow .3s;
-    -o-transition: box-shadow .3s;
     transition: box-shadow .3s;
     transition: box-shadow .3s, -webkit-box-shadow .3s;
   }
@@ -1698,7 +1721,6 @@ body li {
             box-shadow: 0px 5px 29px 0px rgba(40, 145, 251, 0.55);
     -webkit-transition: -webkit-box-shadow .3s;
     transition: -webkit-box-shadow .3s;
-    -o-transition: box-shadow .3s;
     transition: box-shadow .3s;
     transition: box-shadow .3s, -webkit-box-shadow .3s;
   }
@@ -1706,7 +1728,6 @@ body li {
     cursor: pointer;
     color: #2a93fe;
     -webkit-transition: color .3s;
-    -o-transition: color .3s;
     transition: color .3s;
   }
   .personal .carousel .carousel-control-prev:hover, .personal .carousel .carousel-control-next:hover {
@@ -1719,24 +1740,22 @@ body li {
   .map-data__address a:hover, .map-data__phone a:hover, .map-data__email a:hover {
     color: #2a93fe;
     -webkit-transition: color .3;
-    -o-transition: color .3;
     transition: color .3;
   }
   .footer-link a:hover {
     color: #0056b3;
     text-decoration: underline;
     -webkit-transition: color .3;
-    -o-transition: color .3;
     transition: color .3;
   }
   .footer-politics:hover {
     color: #191c23;
     cursor: pointer;
     -webkit-transition: color .3;
-    -o-transition: color .3;
     transition: color .3;
   }
   .footer-img a:hover {
     color: #ffffff;
   }
 }
+/*# sourceMappingURL=styles.css.map */

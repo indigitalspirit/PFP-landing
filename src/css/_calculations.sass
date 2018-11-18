@@ -41,6 +41,7 @@
     &__button
       .button
         padding: 20px 55px
+        display: inline-block
 
 
 
@@ -65,16 +66,20 @@
       font-size: 16px/* Приближение из-за подстановки шрифтов */
       font-weight: 700
    
+    &__square, &__baget 
+      position: relative
+
     &__square input, &__baget input
       width: 100%
       margin-top: 25px
       background-color:  #e5e5e5
-
-      // height: 2px
+      position: relative
 
       &[type="range"]
         -webkit-appearance: none
         width: 100%
+        display: block  
+        outline: none
 
         &:focus 
           outline: none
@@ -179,10 +184,33 @@
 
       
 
+      // height: 2px
+    
+    
+    &__square-output , &__baget-output   
+      position: absolute
+      top: 52px
+      /* display: none */
+      width: 50px
+      height: 24px
+      /* border: 1px solid #e2e2e2 */
+      background-color: transparent
+      /* border-radius: 3px */
+      color: #000000
+      font-family: Gilroy
+
+      font-size: 14px
+      line-height: 24px
+      text-align: center
+
+
+      
+
     &__square
-      margin-top: 81px
+      
 
     &__baget
+      margin-top: 81px
 
     label.select 
       // margin-top: 81px
@@ -228,12 +256,15 @@
 
           &:focus 
             outline: none
-            background-color: $blue
+            // background-color: $blue
             color: $white
+            // border-radius: 60%
           &:active 
+            // border-radius: 60%
             // background-color: transparent
           &:focus-within
             color: black
+            // border-radius: 60%
             // background-color: transparent
           
           &:visited
