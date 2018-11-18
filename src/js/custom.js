@@ -11,18 +11,18 @@ $(document).ready(function(){
   //$('#optionsForm').validator();
 
 
-  function sendAjaxForm(url, form, modal) {
-    console.log(url, form);
+  function sendAjaxForm(url, form, modal, extraData) {
+    //console.log(url, form, $(form).serialize() + extraData);
     $.ajax({
       url:     url, //url страницы 
       type:     "POST", //метод отправки
-      data: $(form).serialize(),
+      data: $(form).serialize() + extraData,
       // dataType: "html", //формат данных
       // data: $(form).serialize(),  // Сеарилизуем объект
       success: function(response) { //Данные отправлены успешно
 
         var messageText = response.message;
-        console.log('Ок. Данные отправлены ' + messageText);
+        console.log("Данные отправлены \n" + messageText);
 
         $(modal).find('.content').css({'display': 'none', 'transition': 'display .5s'});
         $(modal).find('.content__sent').css({'display': 'block', 'transition': 'display 1s'});
@@ -38,19 +38,20 @@ $(document).ready(function(){
           // $('.modal-error').fadeIn();
          
       } 
-  });
+    });
   }
 
   function validateForm(form) {
     //TODO: fadein\fadeout\buttons disabled
     var user_name = form.find("input[name='user_phone']").val();
+    
     return user_name;
 
   }
 
   $('.content__sent button.close').on("click", function(e) {
     //e.preventDefault();
-    console.log('modal closed');
+    //console.log('modal closed');
     var modal =  $(this).closest('.modal');
 
     $(modal).find('.content').css({'display': 'block', 'transition': 'display .5s'});
@@ -60,7 +61,7 @@ $(document).ready(function(){
   });
   $('.content button.close').on("click", function(e) {
     //e.preventDefault();
-    console.log('modal closed');
+    //console.log('modal closed');
     var modal =  $(this).closest('.modal');
 
     $(modal).find('label.user_phone').css({'color': '#ffffff'});
@@ -74,20 +75,22 @@ $(document).ready(function(){
    
     var modal =  $(this).closest('.modal');
     $(modal).find('label.user_phone').css({'color': '#ffffff'});
-    // user_name_label = $(this).parent().find('label.user_name');
-    //   if(user_name_label) {
-    //       //console.log('user_name_label '+ user_name_label);
-    //       user_name_label.css('color', 'transparent');
-    //       $(this).css('border-color', '#777777');
-    //   }
-    //   else {
-    //       //console.log('Не могу получить user_name_label');
-    //   }
-      
-      
+    var form =  $(this).closest('form');
+    $(form).find('label.user_phone').css({'color': 'transparent'});
+          
+  });
+
+  $( "input[name='user_email']").keydown(function() {
+    //console.log( "keydown" );
+   
+  
+    var form =  $(this).closest('form');
+    $(form).find('label.user_email').css({'color': 'transparent'});
+          
   });
   
-
+///////////////////////////////////////
+///////////////////////////////////////
   $('.optionsModal__call').on("click", function(e) {
     e.preventDefault();
     console.log('modal options call');
@@ -100,7 +103,8 @@ $(document).ready(function(){
 
     if(validateForm(form)) {
 
-      sendAjaxForm(url, form, modal);
+      var remarkData = '&options=three';
+      sendAjaxForm(url, form, modal, remarkData);
       
     }
     else {
@@ -111,9 +115,56 @@ $(document).ready(function(){
   });
 
 
+  $('.optionsModal__whatsapp').on("click", function(e) {
+    e.preventDefault();
+    console.log('modal options whatsapp');
+
+    var form = $(this).closest('form');
+    var url = 'php/send.php';
+    var modal =  $(this).closest('#optionsModal');
+
+    //console.log('modal', modal);
+
+    if(validateForm(form)) {
+
+      var remarkData = '&whatsapp=call&options=three';
+      sendAjaxForm(url, form, modal, remarkData);
+      
+    }
+    else {
+      $(form).find('label.user_phone').css({'color': 'red', 'transition': 'color .3s'});
+    }
+  
+    return false; 
+  });
+
+  
+
+///////////////////////////////////////////
   $('.mainModal__call').on("click", function(e) {
     e.preventDefault();
     console.log('modal main call');
+
+    var form = $(this).closest('form');
+    var url = 'php/send.php';
+    var modal =  $(this).closest('#mainModal');
+    var remarkData = '';
+    //console.log('modal', modal);
+
+    if(validateForm(form)) {
+
+      sendAjaxForm(url, form, modal, remarkData);
+      
+    }
+    else {
+      $(form).find('label.user_phone').css({'color': 'red', 'transition': 'color .3s'});
+    }
+  
+    return false; 
+  });
+  $('.mainModal__whatsap').on("click", function(e) {
+    e.preventDefault();
+    console.log('modal main whatsap call');
 
     var form = $(this).closest('form');
     var url = 'php/send.php';
@@ -122,8 +173,10 @@ $(document).ready(function(){
     //console.log('modal', modal);
 
     if(validateForm(form)) {
+      
+      var whatsapData = '&whatsapp=call';
 
-      sendAjaxForm(url, form, modal);
+      sendAjaxForm(url, form, modal, whatsapData);
       
     }
     else {
@@ -133,82 +186,213 @@ $(document).ready(function(){
     return false; 
   });
 
+  /////////////////////////////////////////
 
 
-
-
-
-
-
-  // Download form 
-
-  // Отправка формы
-  function submitUpload(e) {
+  ///////////////////////////////////////////
+  $('.tzModal__call').on("click", function(e) {
     e.preventDefault();
-    console.log('upload ');
+    console.log('modal tz call');
 
-    // var $photos = $('.js-photos'),
-    //     formdata = new FormData;
+    var form = $(this).closest('form');
+    var url = 'php/send.php';
+    var modal =  $(this).closest('#tzModal');
+    var remarkData = '&options=tz';
+    //console.log('modal', modal);
 
-    // // Добавление файлов в formdata
-    // $photos.each(function(index, $photo) {
-    //     if ($photo.files.length) {
-    //         formdata.append('photos[]', $photo.files[0]);
-    //     }
-    // });
+    if(validateForm(form)) {
 
-    // // Отправка на сервер
-    // $.ajax({
-    //     url: 'php/upload.php',
-    //     data: formdata,
-    //     type: 'POST',
-    //     dataType: 'json',
-    //     processData: false,
-    //     contentType: false,
-    //     success: function(responce) {
-    //         console.log('responce from server: ', responce);
-    //     }
-    // });
-}
-
-
-
-//Clicks
-
-// $('.optionsModal__call').on("click", function(e) {
-//   e.preventDefault();
-//   console.log('modal options call');
-
-//   var form = $(this).closest('form');
-//   var url = 'php/send.php';
-//   var modal =  $(this).closest('#optionsModal');
-
-//   //console.log('modal', modal);
-
-//   if(validateForm(form)) {
-
-//     sendAjaxForm(url, form, modal);
-    
-//   }
-//   else {
-//     $(form).find('label.user_phone').css({'color': 'red', 'transition': 'color .3s'});
-//   }
-
-//   return false; 
-// });
-
-$('.uploadModal__bton').on("click", function(e) {
-  e.preventDefault();
-  console.log('click modal');
-
+      sendAjaxForm(url, form, modal, remarkData);
+      
+    }
+    else {
+      $(form).find('label.user_phone').css({'color': 'red', 'transition': 'color .3s'});
+    }
   
-  return false;
+    return false; 
+  });
+  $('.tzModal__whatsap').on("click", function(e) {
+    e.preventDefault();
+    console.log('modal tz whatsap call');
+
+    var form = $(this).closest('form');
+    var url = 'php/send.php';
+    var modal =  $(this).closest('#tzModal');
+
+    //console.log('modal', modal);
+
+    if(validateForm(form)) {
+      
+      var whatsapData = '&whatsapp=call&options=tz';
+
+      sendAjaxForm(url, form, modal, whatsapData);
+      
+    }
+    else {
+      $(form).find('label.user_phone').css({'color': 'red', 'transition': 'color .3s'});
+    }
+  
+    return false; 
+  });
+
+  /////////////////////////////////////////
 
 
 
-});
+//////////////////////////////////////////
+  $('.pricelist-form__call').on("click", function(e) {
+    e.preventDefault();
+    console.log('pricelist-form call');
 
+    var form = $(this).closest('form');
+    var url = 'php/send.php';
+    // var modal =  $(this).closest('#mainModal');
 
+    //console.log('modal', modal);
+    var user_email = form.find("input[name='user_email']").val();
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  
+
+    if(user_email && re.test(user_email)) {
+
+      var remarkData = '&options=price';
+
+      $.ajax({
+        url:     url, //url страницы 
+        type:     "POST", //метод отправки
+        data: $(form).serialize() + remarkData,
+        // dataType: "html", //формат данных
+        // data: $(form).serialize(),  // Сеарилизуем объект
+        success: function(response) { //Данные отправлены успешно
+  
+          var messageText = response.message;
+          console.log("Данные отправлены \n" + messageText);
+  
+          // $(modal).find('.content').css({'display': 'none', 'transition': 'display .5s'});
+          // $(modal).find('.content__sent').css({'display': 'block', 'transition': 'display 1s'});
+          $(form).find('label.user_email').css({'color': 'transparent'});
+          $(form)[0].reset();
+          $('#successModal').modal('show');
+
+          
+    
+        },
+  
+        error: function(response) { // Данные не отправлены
+            console.log('Ошибка. Данные не отправлены.'+response.responseText);
+            /*** Вызываем окно ошибки */
+            // $('.modal-error').fadeIn();
+           
+        } 
+    });
+      
+    }
+    else {
+      $(form).find('label.user_email').css({'color': 'red', 'transition': 'color .3s'});
+      //console.log('empty');
+    }
+  
+    return false; 
+  });
+
+/////////////////////////////////
+////////////////////////////////
+  $('.contact-form__call').on("click", function(e) {
+    e.preventDefault();
+    console.log('contact-form call');
+
+    var form = $(this).closest('form');
+    var url = 'php/send.php';
+    // var modal =  $(this).closest('#mainModal');
+
+    //console.log('modal', modal);
+
+    if(validateForm(form)) {
+
+      var remarkData = '&options=enginier';
+      //sendAjaxForm(url, form, modal, remarkData);
+
+      $.ajax({
+        url:     url, //url страницы 
+        type:     "POST", //метод отправки
+        data: $(form).serialize() + remarkData,
+        // dataType: "html", //формат данных
+        // data: $(form).serialize(),  // Сеарилизуем объект
+        success: function(response) { //Данные отправлены успешно
+  
+          var messageText = response.message;
+          console.log("Данные отправлены \n" + messageText);
+  
+          $(form).find('label.user_phone').css({'color': 'transparent'});
+          $(form)[0].reset();
+          $('#successModal').modal('show');
+
+        },
+  
+        error: function(response) { // Данные не отправлены
+            console.log('Ошибка. Данные не отправлены.'+response.responseText);
+            /*** Вызываем окно ошибки */
+            // $('.modal-error').fadeIn();
+        } 
+    });
+      
+    }
+    else {
+      $(form).find('label.user_phone').css({'color': 'red', 'transition': 'color .3s'});
+    }
+  
+    return false; 
+  });
+
+  $('.contact-form__whatsapp').on("click", function(e) {
+    e.preventDefault();
+    console.log('contact-form whatsapp call');
+
+    var form = $(this).closest('form');
+    var url = 'php/send.php';
+    // var modal =  $(this).closest('#mainModal');
+
+    //console.log('modal', modal);
+
+    if(validateForm(form)) {
+
+      var remarkData = '&whatsapp=enginier';//&whatsapp=enginier
+      //sendAjaxForm(url, form, modal, remarkData);
+
+      $.ajax({
+        url:     url, //url страницы 
+        type:     "POST", //метод отправки
+        data: $(form).serialize() + remarkData,
+        // dataType: "html", //формат данных
+        // data: $(form).serialize(),  // Сеарилизуем объект
+        success: function(response) { //Данные отправлены успешно
+  
+          var messageText = response.message;
+          console.log("Данные отправлены \n" + messageText);
+  
+          $(form).find('label.user_phone').css({'color': 'transparent'});
+          $(form)[0].reset();
+          $('#successModal').modal('show');
+
+        },
+  
+        error: function(response) { // Данные не отправлены
+            console.log('Ошибка. Данные не отправлены.'+response.responseText);
+            /*** Вызываем окно ошибки */
+            // $('.modal-error').fadeIn();
+        } 
+    });
+      
+    }
+    else {
+      $(form).find('label.user_phone').css({'color': 'red', 'transition': 'color .3s'});
+    }
+  
+    return false; 
+  });
+///////////////////////////
+/////////////////////////////////////
+  
 
 $('.uploadModal__call').on("click", function(e) {
   e.preventDefault();
@@ -226,13 +410,14 @@ $('.uploadModal__call').on("click", function(e) {
 
     if(validateForm(form)) {
       var userPhone = $(form).find('input').val();
-      console.log(userPhone);
-      form_data.append('phone', userPhone);
-      console.log(form_data[0], form_data[1]);
+      form_data.append('options', 'three');
+      //console.log(userPhone);
+      form_data.append('user_phone', userPhone);
+      //console.log(form_data[0], form_data[1]);
       
     
       $.ajax({
-        url: 'php/upload.php',
+        url: 'php/send.php',
         //dataType: 'text',
         cache: false,
         contentType: false,
@@ -241,9 +426,9 @@ $('.uploadModal__call').on("click", function(e) {
         type: 'post',
         success: function(response){
             //alert(php_script_response);
-            console.log('uploaded');
+            //console.log('uploaded');
             var messageText = response.message;
-            console.log('Ок. Данные отправлены ' + messageText);
+            console.log("Данные отправлены \n" + messageText);
 
             $(modal).find('.content').css({'display': 'none', 'transition': 'display .5s'});
             $(modal).find('.content__sent').css({'display': 'block', 'transition': 'display 1s'});
@@ -268,11 +453,75 @@ $('.uploadModal__call').on("click", function(e) {
   
 });
 
+$('.uploadModal__whatsapp').on("click", function(e) {
+  e.preventDefault();
+  console.log('modal upload call');
+
+
+  var form = $(this).closest('form');
+  var modal =  $(this).closest('#uploadModal');
+
+
+    var file_doc = $('.inputfile').prop('files')[0];
+    var form_data = new FormData();
+    form_data.append('file', file_doc);
+    
+
+    if(validateForm(form)) {
+      var userPhone = $(form).find('input').val();
+      //var options = "&options=three";
+      //console.log(userPhone);
+      form_data.append('options', 'three');
+      form_data.append('whatsapp', 'call');
+      form_data.append('user_phone', userPhone);
+      //console.log(form_data[0], form_data[1]);
+      
+    
+      $.ajax({
+        url: 'php/send.php',
+        //dataType: 'text',
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: form_data,
+        type: 'post',
+        success: function(response){
+            //alert(php_script_response);
+            //console.log('uploaded');
+            var messageText = response.message;
+            console.log("Данные отправлены \n" + messageText);
+
+            $(modal).find('.content').css({'display': 'none', 'transition': 'display .5s'});
+            $(modal).find('.content__sent').css({'display': 'block', 'transition': 'display 1s'});
+            $(form).find('label.user_phone').css({'color': '#ffffff'});
+            $(form)[0].reset();
+        },
+        error: function(response) { // Данные не отправлены
+          console.log('Ошибка. Данные не отправлены.'+response.responseText);
+          /*** Вызываем окно ошибки */
+          // $('.modal-error').fadeIn();
+        
+      } 
+      });
+      
+    }
+    else {
+      $(form).find('label.user_phone').css({'color': 'red', 'transition': 'color .3s'});
+    }
+
+    return false; 
+
+  
+});
+
+///////////////////////
+////////////////////////
+
   $('.project-form__buton').on("click", function() {
  
     //e.preventDefault();
 
-    console.log('upload started');
+    //console.log('upload started');
     //TODO validation upload file
     var file_doc = $('.inputfile').prop('files')[0];
 

@@ -102,7 +102,7 @@ body li {
   display: none;
 }
 
-.modal-content .content__sent::before {
+.modal-content .content__sent::before, .modal-content .success::before {
   position: absolute;
   content: '';
   bottom: 0;
@@ -115,12 +115,12 @@ body li {
   background-size: 100% 100%;
 }
 
-.modal-content .content__sent .modal-sent {
+.modal-content .content__sent .modal-sent, .modal-content .success .modal-sent {
   padding-bottom: 230px;
   background-color: transparent;
 }
 
-.modal-content .content__sent .modal-sent .modal-title {
+.modal-content .content__sent .modal-sent .modal-title, .modal-content .success .modal-sent .modal-title {
   margin-top: 40px;
 }
 
@@ -1130,17 +1130,25 @@ body li {
   clip-path: circle(50% at 0 125%);
 }
 
+.contact-form label {
+  display: block;
+  color: transparent;
+  margin-top: 20px;
+  font-size: 14px;
+  font-weight: 300;
+  padding-left: 20px;
+}
+
 .contact-form .section-title {
   color: #ffffff;
 }
 
 .contact-form .section-subtitle {
   color: #dadada;
-  margin-top: 25px;
+  margin-top: 20px;
 }
 
 .contact-form__input {
-  margin-top: 47px;
   font-family: Gilroy-Light;
   color: #ffffff;
   font-size: 14px;
@@ -1509,12 +1517,32 @@ body li {
 }
 
 .pricelist-form__buttons {
-  margin-top: 63px;
+  margin-top: 50px;
   margin-bottom: 140px;
 }
 
-.pricelist-form__buttons .button-o {
-  padding: 20px 120px;
+.pricelist-form__buttons label {
+  display: block;
+  color: transparent;
+  font-size: 14px;
+  font-weight: 300;
+  padding-left: 20px;
+}
+
+.pricelist-form__buttons .input_email {
+  padding: 20px 25px;
+  font-family: Gilroy;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #ffffff;
+  text-align: center;
+  border-radius: 30px;
+  background-color: transparent;
+  width: 300px;
+  border-width: 2px;
+  border-color: #2a93fe;
+  border-style: solid;
 }
 
 .pricelist-form__buttons .button-c {

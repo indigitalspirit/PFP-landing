@@ -1,6 +1,7 @@
 <?php 
 
-if(isset($_POST["user_phone"]) || isset($_POST["user_email"]) ) {
+if(isset($_POST["phone"])) {
+
   // configure
   $from = 'anastasia-pavlova.com';
   $sendTo = 'nastya-pavlova-93@yandex.ru'; // Add Your Email
@@ -12,28 +13,12 @@ if(isset($_POST["user_phone"]) || isset($_POST["user_email"]) ) {
   //'There was an error while submitting the form. Please try again later';
 
   // let's do the sending
-  if(isset($_POST["user_email"])) 
-    $user_email = htmlentities($_POST['user_email']);
 
-  if(isset($_POST["user_phone"])) 
-    $user_phone = htmlentities($_POST['user_phone']);
-
-  if(isset($_POST["whatsapp"])) {
-    $whatsapp = htmlentities($_POST['whatsapp']);
-    
-  }
-
-  if(isset($_POST["options"])) {
-    $options = htmlentities($_POST['options']);
-    
-  }
-    
-
-  
+  $user_phone = htmlentities($_POST['phone']);
 
   try
   {
-      $emailText = "Новое сообщение от PFP-лендинг \n========\n";
+      $emailText = "Новое сообщение с anastasia-pavlova.com \n========\n";
       //"You have new message from contact form\n=============================\n";
 
       // foreach ($_POST as $key => $value) {
@@ -42,33 +27,7 @@ if(isset($_POST["user_phone"]) || isset($_POST["user_email"]) ) {
       //         $emailText .= "$fields[$key]: $value\n";
       //     }
       // }
-      if($user_phone) 
-        $emailText .= "Телефон: $user_phone\n";
-
-      if($user_email) 
-        $emailText .= "Email: $user_email\n";
-
-      if($whatsapp || $options)
-        $emailText .= "======= Примечания =======\n";
-
-      if($whatsapp === 'call') 
-        $emailText .= "Позвонить в WhatsApp\n";
-
-      if($options === 'three')
-        $emailText .= "Рассчет в 3 вариантах\n";
-      
-      if($options === 'price')
-        $emailText .= "Выслать прайс на материалы\n";
-
-      if($options === 'tz')
-        $emailText .= "Разработка ТЗ\n";
-
-
-      if($options === 'enginier')
-        $emailText .= "Выезд инженера. Позвонить\n";
-
-      if($whatsapp === 'enginier') 
-        $emailText .= "Выезд инженера. WhatsApp\n";
+      $emailText .= "Телефон: $user_phone\n";
 
       // $headers = array('Content-Type: text/plain; charset="UTF-8";',
       //     'From: ' . $from,
@@ -79,28 +38,6 @@ if(isset($_POST["user_phone"]) || isset($_POST["user_email"]) ) {
       //mail($sendTo, $subject, $emailText, implode("\n", $headers));
 
       // $responseArray = array('type' => 'success', 'message' => $okMessage);
-
-      //file uploading
-
-    if(isset($_FILES['file'])) {
-      $client_file = '';
-      //TODO валидация файла
-
-      if ( 0 < $_FILES['file']['error'] ) {
-        //$responseArray['message'] = 'file problems';
-       // echo $responseArray['message'];
-       // exit();
-      }
-      else {
-      move_uploaded_file($_FILES['file']['tmp_name'], '../uploads/' . $_FILES['file']['name']);
-      $client_file = $_FILES['file']['name'];
-
-      if($client_file)
-        $emailText .= "Клиент прикрепил файл: $client_file\n";
-
-      }
-    }
-
       $responseArray = array('type' => 'success', 'message' => $emailText);
   }
   catch (\Exception $e)
@@ -119,7 +56,13 @@ if(isset($_POST["user_phone"]) || isset($_POST["user_email"]) ) {
       echo $responseArray['message'];
   }
 
-  
+ if ( 0 < $_FILES['file']['error'] ) {
+    $responseArray['message'] = 'file problems';
+    echo $responseArray['message'];
+  }
+   else {
+   move_uploaded_file($_FILES['file']['tmp_name'], '../uploads/' . $_FILES['file']['name']);
+  }
 
 }
 else {
@@ -128,6 +71,5 @@ else {
 
 }
 
-
-
+  
 ?>
