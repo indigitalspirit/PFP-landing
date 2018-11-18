@@ -222,26 +222,28 @@
           <div class="modal-subtitle">
               Как вам удобнее связаться?
           </div>
-          <input type="text" class="modal-input" placeholder="+7 (___) ___-__-__">
-          <div class="modal-body__buttons">
-            <div class="row">
-              <div class="col-6 text-right pr-2">
-                <button class="button button-c">Позвонить</button>
-              </div>
-              <div class="col-6 text-left pl-2">
-                <button class="button button-o">НАПИСАТЬ В <span>WhatsApp</span></button>
-
-              </div>
-            </div>
-              
-            </div>
+          <form action="" method="post">
+              <input type="text" class="modal-input" placeholder="+7 (___) ___-__-__">
+              <div class="modal-body__buttons">
+                <div class="row">
+                  <div class="col-6 text-right pr-2">
+                    <button class="button button-c mainModal__call" type="submit">Позвонить</button>
+                  </div>
+                  <div class="col-6 text-left pl-2">
+                    <button class="button button-o">НАПИСАТЬ В <span>WhatsApp</span></button>
+    
+                  </div>
+                </div>
+                  
+                </div>
+          </form>
+          
 
         </div>
 
       </div>
     </div>
   </div>
-
 
 
 
@@ -412,6 +414,47 @@
 
   
 
+  <!-- Modal Upload -->
+  <div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="uploadModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+          
+          <div class="modal-body">
+            <div class="modal-title">
+                Потребуется уточнить <br> несколько параметров
+            </div>
+            <div class="modal-subtitle">
+                Как вам удобнее связаться?
+            </div>
+            <form method="post">
+
+                <input type="text" class="modal-input" placeholder="+7 (___) ___-__-__">
+                <div class="modal-body__buttons">
+                  <div class="row">
+                    <div class="col-6 text-right pr-2">
+                      <button class="button button-c uploadModal__call" type="submit">Позвонить</button>
+                    </div>
+                    <div class="col-6 text-left pl-2">
+                      <button class="button button-o">НАПИСАТЬ В <span>WhatsApp</span></button>
+                    </div>
+                  </div>
+                </div>
+
+            </form>
+            
+  
+          </div>
+  
+        </div>
+      </div>
+    </div>
+
   <section class="project">
     <div class="container">
       <form class="project-form" method="post">
@@ -424,7 +467,7 @@
                 <div class="section-subtitle">
                     Просто сбросьте файл в окошко справа и мы <br> оперативно сделаем для вас расчет в 3 вариантах.
                 </div>
-                <button class="button button-c project-form__button" type="submit">РАССЧИТАТЬ МОЙ ПРОЕКТ</button>
+                <a class="button button-c project-form__button"  data-toggle="modal" data-target="#uploadModal">РАССЧИТАТЬ МОЙ ПРОЕКТ</a>
               </div>
             </div>
     
@@ -433,7 +476,7 @@
                   <div class="project-doc__upload">
                     <div class="project-doc__upload-block">
                         <input type="file" name="file" id="file" class="inputfile" />
-                        <label for="file"></label>
+                        <label for="file" class="inputfile__label"></label>
                       
                         <!-- <img src="images/tz/folder.svg" alt="ТЗ"> -->
                         <div class="project-doc__upload-txt">
@@ -460,86 +503,634 @@
  
 
   <section class="personal">
-    <div class="personal-wrapper">
-        <div class="container">
-            <div class="row">
-              <div class="col-5 text-left">
-                  <div class="section-title">
-                      Частный <br> дом
-                  </div>
-                  <div class="section-subtitle">
-                      Ленинградская область, д.Глубокое 
-                  </div>
-                  <div class="section-subtitle">
-                      Вид напольного покрытия:
-                  </div>
-                  <div class="personal-txt">
-                    Устройство эпоксидного покрытия пола компании TNP group. <br>
-                    Перечень работ (демонтаж металлических направляющих, <br> шлифование полимерного покрытия пола, грунтование, <br> заливка финишного слоя Teping.)
-                  </div>
-                  <div class="personal-features">
+    <form action="">
+      <div id="carouselExampleIndicators" class="carousel slide" data-ride="false">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="personal-wrapper">
+              <img src="images/personal/7.png" alt="">
+              <div class="container">
+                <div class="row">
+                  <div class="col-12 text-left">
+    
+    
                     <div class="row">
-        
-                        <div class="col-5 pr-0">
-                            <div class="personal-features__item">
-                               
-                              <img src="images/personal/ruler.svg" class="" alt="Площадь"> 
-                          <!-- </div> -->
-                            
-                              <div class="personal-features__item-txt">
-                                Площадь: <br> <span>85 м2</span>
+                      <div class="col-5 text-left pl-0">
+                        <div class="carousel-caption d-none d-md-block">
+                          <div class="section-title">
+                            Частный <br> дом
+                          </div>
+                          <div class="section-subtitle">
+                            Ленинградская область, д.Глубокое
+                          </div>
+                          <div class="section-subtitle">
+                            Вид напольного покрытия:
+                          </div>
+                          <div class="personal-txt">
+                            Устройство эпоксидного покрытия пола компании TNP group.
+                            Перечень работ (демонтаж металлических направляющих, шлифование полимерного покрытия пола,
+                            грунтование, заливка финишного слоя Teping.)
+                          </div>
+                          <div class="personal-features">
+                            <div class="row">
+    
+                              <div class="col-5 pr-0 text-left">
+                                <div class="personal-features__item">
+    
+                                  <img src="images/personal/ruler.svg" class="" alt="Площадь">
+                                  <!-- </div> -->
+    
+                                  <div class="personal-features__item-txt">
+                                    Площадь: <br> <span>85 м2</span>
+                                  </div>
+    
+                                </div>
                               </div>
-      
-                          </div>
-                        </div>
-                    
-                        <div class="col-7 pl-0">
-                            <div class="personal-features__item">
-                                <img src="images/personal/clock.svg" class="" alt="Срок выполнения"> 
-                                <!-- </div> -->
-                                  
-                                <div class="personal-features__item-txt">
-                                  Срок выполнения: <br> <span>6 дней</span>
+    
+                              <div class="col-7 pl-0  text-left">
+                                <div class="personal-features__item">
+                                  <img src="images/personal/clock.svg" class="" alt="Срок выполнения">
+                                  <!-- </div> -->
+    
+                                  <div class="personal-features__item-txt">
+                                    Срок выполнения: <br> <span>6 дней</span>
+                                  </div>
                                 </div>
-                          </div>
-                        </div>
-                        
-                   
-                        <div class="col-6">
-                            <div class="personal-features__item">
-                                <img src="images/personal/wallet.svg" class="" alt="Стоимость"> 
-                                <!-- </div> -->
-                                  
-                                <div class="personal-features__item-txt">
-                                  Стоимость: <br> <span>1950р/м2</span>
+                              </div>
+    
+    
+                              <div class="col-6 text-left">
+                                <div class="personal-features__item">
+                                  <img src="images/personal/wallet.svg" class="" alt="Стоимость">
+                                  <!-- </div> -->
+    
+                                  <div class="personal-features__item-txt">
+                                    Стоимость: <br> <span>1950р/м2</span>
+                                  </div>
                                 </div>
+                              </div>
+    
+                              <div class="col-6 text-left">
+    
+                              </div>
+                            </div>
+    
                           </div>
                         </div>
-                    
-                        <div class="col-6">
-                            
+                      </div>
+    
+                      <div class="col-7 text-right">
+                        <div class="personal-image">
+                          <div class="personal-image-wrapper">
+                            <img src="images/logo.png" alt="PFP">
+                          </div>
+    
                         </div>
+                      </div>
+    
                     </div>
-                     
                   </div>
-      
-                  <button class="button button-c">Рассчитать мой проект</button>
-                  
-              </div>
-              <div class="col-7 text-right">
-                <div class="personal-image">
-                  <div class="personal-image-wrapper">
-                      <img src="images/logo.png" alt="PFP">
-                  </div>
-                    
                 </div>
-                
               </div>
-                
             </div>
           </div>
-    </div>
-   
+          <div class="carousel-item">
+              <div class="personal-wrapper">
+                <img src="images/personal/6.png" alt="">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-12 text-left">
+      
+      
+                      <div class="row">
+                        <div class="col-5 text-left pl-0">
+                          <div class="carousel-caption d-none d-md-block">
+                            <div class="section-title">
+                              Главный офис компании <br> Sport Life
+                            </div>
+                            <div class="section-subtitle">
+                                Санкт-Петербург,ул. Маршала Захарова.
+                            </div>
+                            <div class="section-subtitle">
+                              Вид напольного покрытия:
+                            </div>
+                            <div class="personal-txt">
+                                a) монтаж полимерного нескользящего покрытия (Въездная группа паркинга) 
+                                б) монтаж полимерного эпоксидного покрытия.
+                            </div>
+                            <div class="personal-features">
+                                <div class="row">
+        
+                                  <div class="col-5 pr-0 text-left">
+                                    <div class="personal-features__item">
+        
+                                      <img src="images/personal/ruler.svg" class="" alt="Площадь">
+                                      <!-- </div> -->
+        
+                                      <div class="personal-features__item-txt">
+                                        Площадь: <br> <span>250 м2</span>
+                                      </div>
+        
+                                    </div>
+                                  </div>
+        
+                                  <div class="col-7 pl-0  text-left">
+                                    <div class="personal-features__item">
+                                      <img src="images/personal/clock.svg" class="" alt="Срок выполнения">
+                                      <!-- </div> -->
+        
+                                      <div class="personal-features__item-txt">
+                                        Срок выполнения: <br> <span>6 дней</span>
+                                      </div>
+                                    </div>
+                                  </div>
+        
+        
+                                  <div class="col-6 text-left">
+                                    <div class="personal-features__item">
+                                      <img src="images/personal/wallet.svg" class="" alt="Стоимость">
+                                      <!-- </div> -->
+        
+                                      <div class="personal-features__item-txt">
+                                        Стоимость: <br> <span>1469р/м2</span>
+                                      </div>
+                                    </div>
+                                  </div>
+        
+                                  <div class="col-6 text-left">
+        
+                                  </div>
+                                </div>
+        
+                              </div>
+                          </div>
+                        </div>
+      
+                        <div class="col-7 text-right">
+                          <div class="personal-image">
+                            <div class="personal-image-wrapper">
+                              <img src="images/logo.png" alt="PFP">
+                            </div>
+      
+                          </div>
+                        </div>
+      
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="carousel-item">
+              <div class="personal-wrapper">
+                <img src="images/personal/5.png" alt="">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-12 text-left">
+      
+      
+                      <div class="row">
+                        <div class="col-5 text-left pl-0">
+                          <div class="carousel-caption d-none d-md-block">
+                            <div class="section-title">
+                                Фабрика картонно-бумажных  <br> изделий
+                            </div>
+                            <div class="section-subtitle">
+                              Ленинградская область, Малое Верево
+                            </div>
+                            <div class="section-subtitle">
+                              Вид напольного покрытия:
+                            </div>
+                            <div class="personal-txt">
+                                Обеспыливание бетона химическими составами. Перечень работ: шлифование поверхности, нанесение эпксидного состава глубокого проникновения.
+                            </div>
+                            <div class="personal-features">
+                                <div class="row">
+        
+                                  <div class="col-5 pr-0 text-left">
+                                    <div class="personal-features__item">
+        
+                                      <img src="images/personal/ruler.svg" class="" alt="Площадь">
+                                      <!-- </div> -->
+        
+                                      <div class="personal-features__item-txt">
+                                        Площадь: <br> <span>1570 м2</span>
+                                      </div>
+        
+                                    </div>
+                                  </div>
+        
+                                  <div class="col-7 pl-0  text-left">
+                                    <div class="personal-features__item">
+                                      <img src="images/personal/clock.svg" class="" alt="Срок выполнения">
+                                      <!-- </div> -->
+        
+                                      <div class="personal-features__item-txt">
+                                        Срок выполнения: <br> <span>4 дня</span>
+                                      </div>
+                                    </div>
+                                  </div>
+        
+        
+                                  <div class="col-6 text-left">
+                                    <div class="personal-features__item">
+                                      <img src="images/personal/wallet.svg" class="" alt="Стоимость">
+                                      <!-- </div> -->
+        
+                                      <div class="personal-features__item-txt">
+                                        Стоимость: <br> <span>670р/м2</span>
+                                      </div>
+                                    </div>
+                                  </div>
+        
+                                  <div class="col-6 text-left">
+        
+                                  </div>
+                                </div>
+        
+                              </div>
+                          </div>
+                        </div>
+      
+                        <div class="col-7 text-right">
+                          <div class="personal-image">
+                            <div class="personal-image-wrapper">
+                              <img src="images/logo.png" alt="PFP">
+                            </div>
+      
+                          </div>
+                        </div>
+      
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="carousel-item">
+              <div class="personal-wrapper">
+                <img src="images/personal/4.png" alt="">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-12 text-left">
+      
+      
+                      <div class="row">
+                        <div class="col-5 text-left pl-0">
+                          <div class="carousel-caption d-none d-md-block">
+                            <div class="section-title">
+                                Пивоваренная компания  <br> Heiniken
+                            </div>
+                            <div class="section-subtitle">
+                                Санкт- Петербург, ул. Тельмана 24
+                            </div>
+                            <div class="section-subtitle">
+                              Вид напольного покрытия:
+                            </div>
+                            <div class="personal-txt">
+                                Бродильный цех, варочное отделение и цех упаковки. Комплекс работ по устройству эпоксидного, полеуретановых и высоконаполненного покрытия пола, нанесение разметки.
+                                Там используются разные материалы.
+                            </div>
+                            <div class="personal-features">
+                                <div class="row">
+        
+                                  <div class="col-5 pr-0 text-left">
+                                    <div class="personal-features__item">
+        
+                                      <img src="images/personal/ruler.svg" class="" alt="Площадь">
+                                      <!-- </div> -->
+        
+                                      <div class="personal-features__item-txt">
+                                        Площадь: <br> <span>1150 м2</span>
+                                      </div>
+        
+                                    </div>
+                                  </div>
+        
+                                  <div class="col-7 pl-0  text-left">
+                                    <div class="personal-features__item">
+                                      <img src="images/personal/clock.svg" class="" alt="Срок выполнения">
+                                      <!-- </div> -->
+        
+                                      <div class="personal-features__item-txt">
+                                        Срок выполнения: <br> <span>15 дней</span>
+                                      </div>
+                                    </div>
+                                  </div>
+        
+        
+                                  <div class="col-6 text-left">
+                                    <div class="personal-features__item">
+                                      <img src="images/personal/wallet.svg" class="" alt="Стоимость">
+                                      <!-- </div> -->
+        
+                                      <div class="personal-features__item-txt">
+                                        Стоимость: <br> <span>1750р/м2</span>
+                                      </div>
+                                    </div>
+                                  </div>
+        
+                                  <div class="col-6 text-left">
+        
+                                  </div>
+                                </div>
+        
+                              </div>
+                          </div>
+                        </div>
+      
+                        <div class="col-7 text-right">
+                          <div class="personal-image">
+                            <div class="personal-image-wrapper">
+                              <img src="images/logo.png" alt="PFP">
+                            </div>
+      
+                          </div>
+                        </div>
+      
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="carousel-item">
+              <div class="personal-wrapper">
+                <img src="images/personal/3.png" alt="">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-12 text-left">
+      
+      
+                      <div class="row">
+                        <div class="col-5 text-left pl-0">
+                          <div class="carousel-caption d-none d-md-block">
+                            <div class="section-title">
+                                ПС - 13 ЛенЭнерго <br> (Васильевский остров) 
+                            </div>
+                            <div class="section-subtitle">
+                                Санкт - Петербург
+                            </div>
+                            <div class="section-subtitle">
+                              Вид напольного покрытия:
+                            </div>
+                            <div class="personal-txt">
+                                Полный комплекс работ по устройству эпоксидного покрытия пола (демонтаж металлических направляющих, шлифование покрытия, выравнивание основания, нанесение промежуточного покрытия и заливка финишного слоя, материал компании PrimaTech).
+                            </div>
+                            <div class="personal-features">
+                                <div class="row">
+        
+                                  <div class="col-5 pr-0 text-left">
+                                    <div class="personal-features__item">
+        
+                                      <img src="images/personal/ruler.svg" class="" alt="Площадь">
+                                      <!-- </div> -->
+        
+                                      <div class="personal-features__item-txt">
+                                        Площадь: <br> <span>2450 м2</span>
+                                      </div>
+        
+                                    </div>
+                                  </div>
+        
+                                  <div class="col-7 pl-0  text-left">
+                                    <div class="personal-features__item">
+                                      <img src="images/personal/clock.svg" class="" alt="Срок выполнения">
+                                      <!-- </div> -->
+        
+                                      <div class="personal-features__item-txt">
+                                        Срок выполнения: <br> <span>16 дней</span>
+                                      </div>
+                                    </div>
+                                  </div>
+        
+        
+                                  <div class="col-6 text-left">
+                                    <div class="personal-features__item">
+                                      <img src="images/personal/wallet.svg" class="" alt="Стоимость">
+                                      <!-- </div> -->
+        
+                                      <div class="personal-features__item-txt">
+                                        Стоимость: <br> <span>1280р/м2</span>
+                                      </div>
+                                    </div>
+                                  </div>
+        
+                                  <div class="col-6 text-left">
+        
+                                  </div>
+                                </div>
+        
+                              </div>
+                          </div>
+                        </div>
+      
+                        <div class="col-7 text-right">
+                          <div class="personal-image">
+                            <div class="personal-image-wrapper">
+                              <img src="images/logo.png" alt="PFP">
+                            </div>
+      
+                          </div>
+                        </div>
+      
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="carousel-item">
+              <div class="personal-wrapper">
+                <img src="images/personal/2.png" alt="">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-12 text-left">
+      
+      
+                      <div class="row">
+                        <div class="col-5 text-left pl-0">
+                          <div class="carousel-caption d-none d-md-block">
+                            <div class="section-title">
+                                Авиационно ремонтный завод.  <br> Склад готовой продукции.
+                            </div>
+                            <div class="section-subtitle">
+                                Ленинградская область,  поселок Войсковицы, 218
+                            </div>
+                            <div class="section-subtitle">
+                              Вид напольного покрытия:
+                            </div>
+                            <div class="personal-txt">
+                                Комплекс работ по устройству эпоксидного покрытия пола (шлифвание основания, нанесение эпоксидной грунтовки Альфа-Пол, укладка промежуточного слоя, заливка финишного эпоксидного покрытия Альфа-Пол).
+                            </div>
+                            <div class="personal-features">
+                              <div class="row">
+      
+                                <div class="col-5 pr-0 text-left">
+                                  <div class="personal-features__item">
+      
+                                    <img src="images/personal/ruler.svg" class="" alt="Площадь">
+                                    <!-- </div> -->
+      
+                                    <div class="personal-features__item-txt">
+                                      Площадь: <br> <span>155 м2</span>
+                                    </div>
+      
+                                  </div>
+                                </div>
+      
+                                <div class="col-7 text-left">
+                                  <div class="personal-features__item">
+                                    <img src="images/personal/clock.svg" class="" alt="Срок выполнения">
+                                    <!-- </div> -->
+      
+                                    <div class="personal-features__item-txt">
+                                      Срок выполнения: <br> <span>3  дня</span>
+                                    </div>
+                                  </div>
+                                </div>
+      
+      
+                                <div class="col-6 text-left">
+                                  <div class="personal-features__item">
+                                    <img src="images/personal/wallet.svg" class="" alt="Стоимость">
+                                    <!-- </div> -->
+      
+                                    <div class="personal-features__item-txt">
+                                      Стоимость: <br> <span>1490р/м2</span>
+                                    </div>
+                                  </div>
+                                </div>
+      
+                                <div class="col-6">
+      
+                                </div>
+                              </div>
+      
+                            </div>
+                          </div>
+                        </div>
+      
+                        <div class="col-7 text-right">
+                          <div class="personal-image">
+                            <div class="personal-image-wrapper">
+                              <img src="images/logo.png" alt="PFP">
+                            </div>
+      
+                          </div>
+                        </div>
+      
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="carousel-item">
+              <div class="personal-wrapper">
+                <img src="images/personal/1.png" alt="">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-12 text-left">
+      
+      
+                      <div class="row">
+                        <div class="col-5 text-left pl-0">
+                          <div class="carousel-caption d-none d-md-block">
+                            <div class="section-title">
+                                Складское помещение  <br> компании Partner Premium
+                            </div>
+                            <div class="section-subtitle">
+                                Санкт- Петербург, Красное село
+                            </div>
+                            <div class="section-subtitle">
+                              Вид напольного покрытия:
+                            </div>
+                            <div class="personal-txt">
+                                Комплекс работ по устройству наливного полиуретанового покрытия (Шлифование действующего основания, грунтование полиуритановым составом компании Nanten, укладка промежуточного слоя, нанесение финишного полиуретанового слоя Nanten).
+                            </div>
+                            <div class="personal-features">
+                                <div class="row">
+        
+                                  <div class="col-5 pr-0 text-left">
+                                    <div class="personal-features__item">
+        
+                                      <img src="images/personal/ruler.svg" class="" alt="Площадь">
+                                      <!-- </div> -->
+        
+                                      <div class="personal-features__item-txt">
+                                        Площадь: <br> <span>850 м2</span>
+                                      </div>
+        
+                                    </div>
+                                  </div>
+        
+                                  <div class="col-7 pl-0  text-left">
+                                    <div class="personal-features__item">
+                                      <img src="images/personal/clock.svg" class="" alt="Срок выполнения">
+                                      <!-- </div> -->
+        
+                                      <div class="personal-features__item-txt">
+                                        Срок выполнения: <br> <span>6 дней</span>
+                                      </div>
+                                    </div>
+                                  </div>
+        
+        
+                                  <div class="col-6 text-left">
+                                    <div class="personal-features__item">
+                                      <img src="images/personal/wallet.svg" class="" alt="Стоимость">
+                                      <!-- </div> -->
+        
+                                      <div class="personal-features__item-txt">
+                                        Стоимость: <br> <span>1380р/м2</span>
+                                      </div>
+                                    </div>
+                                  </div>
+        
+                                  <div class="col-6 text-left">
+        
+                                  </div>
+                                </div>
+        
+                              </div>
+                          </div>
+                        </div>
+      
+                        <div class="col-7 text-right">
+                          <div class="personal-image">
+                            <div class="personal-image-wrapper">
+                              <img src="images/logo.png" alt="PFP">
+                            </div>
+      
+                          </div>
+                        </div>
+      
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+    
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-left pl-0">
+            <button class="button button-c">Рассчитать мой проект</button>
+          </div>
+        </div>
+      </div>
+    </form>
   </section>
 
   <section class="about">
@@ -1030,37 +1621,44 @@
   </section>
 
   <section class="map">
+    <div class="map-ya" id="map">
+        <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A90be443725a9f4295be9c499f979a266e6555cde56227deb9eda03a0795f9758&amp;width=100%25&amp;height=700&amp;lang=ru_RU&amp;scroll=true"></script>
+    </div>
+      
     <div class="container">
       <div class="row">
         <div class="col-3 text-left">
-          <div class="map-title">
-            Головной офис:
+          <div class="map-data">
+              <div class="map-data__title">
+                  Головной офис:
+                </div>
+                
+                <div class="map-data__address">
+                    <div class="row">
+                        <div class="col-2 text-left">
+                          <img src="images/map/addr.png" alt="">
+                        </div>
+                        <div class="col-10 text-left">Санкт-Петербург, Пулковская ул., дом 10, корпус 2,пом/оф 9-Н.</div>
+                      </div>
+                </div>
+                <div class="map-data__phone">
+                    <div class="row">
+                        <div class="col-2 text-left">
+                            <img src="images/map/phone.png" alt="">
+                        </div>
+                        <div class="col-10 text-left"><a href="tel:89216550396">+ 7 921 655 03 96</a></div>
+                      </div>
+                </div>
+                <div class="map-data__email">
+                    <div class="row">
+                        <div class="col-2 text-left">
+                            <img src="images/map/email.png" alt="">
+                        </div>
+                        <div class="col-10 text-left"> <a href="mailto:pfpgroup@mail.ru">pfpgroup@mail.ru</a></div>
+                      </div>
+                </div>
           </div>
           
-          <div class="map-address">
-              <div class="row">
-                  <div class="col-2 text-left">
-                    <img src="images/map/addr.png" alt="">
-                  </div>
-                  <div class="col-10 text-left">Санкт-Петербург, Пулковская ул., дом 10, корпус 2,пом/оф 9-Н.</div>
-                </div>
-          </div>
-          <div class="map-phone">
-              <div class="row">
-                  <div class="col-2 text-left">
-                      <img src="images/map/phone.png" alt="">
-                  </div>
-                  <div class="col-10 text-left"><a href="tel:89216550396">+ 7 921 655 03 96</a></div>
-                </div>
-          </div>
-          <div class="map-email">
-              <div class="row">
-                  <div class="col-2 text-left">
-                      <img src="images/map/email.png" alt="">
-                  </div>
-                  <div class="col-10 text-left"> <a href="mailto:pfpgroup@mail.ru">pfpgroup@mail.ru</a></div>
-                </div>
-          </div>
         </div>
       </div>
     </div>
@@ -1119,7 +1717,7 @@
               Политика конфиденциальности
           </div>
           <div class="footer-link">
-            Сделано в студии <a href="">london</a href="">
+            Сделано в студии <a href="//vk.com/id23159019" target="_blank">london</a>
           </div>
           
 
@@ -1136,6 +1734,42 @@
       </div>
     </div>
   </footer>
+
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript" >
+    (function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+    try {
+    w.yaCounter51137339 = new Ya.Metrika2({
+    id:51137339,
+    clickmap:true,
+    trackLinks:true,
+    accurateTrackBounce:true,
+    webvisor:true
+    });
+    } catch(e) { }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+    s = d.createElement("script"),
+    f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = "https://mc.yandex.ru/metrika/tag.js";
+
+    if (w.opera == "[object Opera]") {
+    d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+    })(document, window, "yandex_metrika_callbacks2");
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/51137339" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+  <!-- BEGIN JIVOSITE CODE {literal} -->
+  <script type='text/javascript'>
+  (function(){ var widget_id = 'dNwOuxteTL';var d=document;var w=window;function l(){
+  var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = '//code.jivosite.com/script/widget/'+widget_id; var ss = document.getElementsByTagName('script')[0]; ss.parentNode.insertBefore(s, ss);}if(d.readyState=='complete'){l();}else{if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();</script>
+  <!-- {/literal} END JIVOSITE CODE -->
 
   <!-- jQuery v3 -->
   <script
@@ -1156,6 +1790,90 @@
 <!-- Custom script -->
 <script src="js/custom.js"></script>
 
-  
+<!-- <script>
+ymaps.ready(function () {
+    var myMap = new ymaps.Map('map', {
+            center: [55.751574, 37.573856],
+            zoom: 9
+        }, {
+            searchControlProvider: 'yandex#search'
+        }),
+
+        // Создаём макет содержимого.
+        MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
+            '<div style="color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>'
+        ),
+
+        myPlacemark = new ymaps.Placemark(myMap.getCenter(), {
+            hintContent: 'Собственный значок метки',
+            balloonContent: 'Это красивая метка'
+        }, {
+            // Опции.
+            // Необходимо указать данный тип макета.
+            iconLayout: 'default#image',
+            // Своё изображение иконки метки.
+            iconImageHref: 'images/myIcon.gif',
+            // Размеры метки.
+            iconImageSize: [30, 42],
+            // Смещение левого верхнего угла иконки относительно
+            // её "ножки" (точки привязки).
+            iconImageOffset: [-5, -38]
+        }),
+
+        myPlacemarkWithContent = new ymaps.Placemark([55.661574, 37.573856], {
+            hintContent: 'Собственный значок метки с контентом',
+            balloonContent: 'А эта — новогодняя',
+            iconContent: '12'
+        }, {
+            // Опции.
+            // Необходимо указать данный тип макета.
+            iconLayout: 'default#imageWithContent',
+            // Своё изображение иконки метки.
+            iconImageHref: 'images/ball.png',
+            // Размеры метки.
+            iconImageSize: [48, 48],
+            // Смещение левого верхнего угла иконки относительно
+            // её "ножки" (точки привязки).
+            iconImageOffset: [-24, -24],
+            // Смещение слоя с содержимым относительно слоя с картинкой.
+            iconContentOffset: [15, 15],
+            // Макет содержимого.
+            iconContentLayout: MyIconContentLayout
+        });
+
+    myMap.geoObjects
+        .add(myPlacemark)
+        .add(myPlacemarkWithContent);
+});</script>   -->
+
+
+<!-- Google Map -->
+<!-- <script src="js/google-map.js"></script> -->
+<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfoHxV5lAiqmYPt5n_TcbuiztW8WaMhys&callback=initMap"
+async defer></script>
+<script>
+var map;
+    function initMap() { //61.7918861,34.3731482,17   59.8364597,30.3514637,18
+        var location = {lat: 59.836077, lng: 30.351968};
+        
+        var map = new google.maps.Map(
+                document.getElementById('map'), {
+                    zoom: 17, 
+                    center: location
+            });
+
+        var marker = new google.maps.Marker({
+            position: location, 
+            map: map,
+            title: "Пулковская ул., 10 корпус 2",
+            icon: {
+              url: "images/markers/svg/Arrow_3.svg",
+              scaledSize: new google.maps.Size(64, 64)
+            }
+            //title: address,
+            //animation: google.maps.Animation.BOUNCE 
+        });
+    }
+</script> -->
 </body>
 </html>

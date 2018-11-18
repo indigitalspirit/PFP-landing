@@ -1,44 +1,63 @@
 .map
-  background-color: $indigo
+  // background-color: $indigo
   height: 700px
   position: relative
-  &-title
-    margin-top: 400px
-    margin-bottom: 40px
-    font-family: Gilroy-Light
-    color:  #2a2d36
-    font-size: 18px/* Приближение из-за подстановки шрифтов */
-    font-weight: 300
-
-
-  &-address
-  &-phone 
-    .col-10
-      padding-top: 2px
-  &-email 
-
-  &-address, &-phone, &-email 
-    font-family: Gilroy
-    color:  #2a2d36
-    font-size: 16px/* Приближение из-за подстановки шрифтов */
-    font-weight: 700
-    margin-bottom: 40px
-    line-height: 24px
-    a 
-      color: #2a2d36
-    img 
-      margin-right: 25px
-    
-
-  .container
-    // height: 100%
-  &::before
+  &-ya
+    z-index: 0
     position: absolute
-    content: ''
-    bottom: 0
+    top: 0
     left: 0
     width: 100%
     height: 100%
-    background-color: $white
-    -webkit-clip-path: circle(50% at 0 110%)
-    clip-path: circle(50% at 0 110%)
+    &::before
+      position: absolute
+      content: ''
+      bottom: 0
+      left: 0
+      width: 100%
+      height: 100%
+      background-color: $white
+      -webkit-clip-path: circle(50% at 0 110%)
+      clip-path: circle(50% at 0 110%)
+      z-index: 1
+    // top: 0
+  .container
+    // z-index: 3
+    // z-index: 1
+    // position: absolute
+    // top: 0
+    
+    // height: 100%
+  
+    
+  &-data
+    // z-index: 1
+    &__title
+      margin-top: 400px
+      margin-bottom: 40px
+      font-family: Gilroy-Light
+      color:  #2a2d36
+      font-size: 18px/* Приближение из-за подстановки шрифтов */
+      font-weight: 300
+
+
+    &__address
+    &__phone 
+      .col-10
+        padding-top: 2px
+    &__email 
+
+    &__address, &__phone, &__email 
+      font-family: Gilroy
+      color:  #2a2d36
+      font-size: 16px/* Приближение из-за подстановки шрифтов */
+      font-weight: 700
+      margin-bottom: 40px
+      line-height: 24px
+      a 
+        color: #2a2d36
+      img 
+        margin-right: 25px
+    
+
+  

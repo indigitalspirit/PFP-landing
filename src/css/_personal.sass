@@ -1,14 +1,14 @@
 .personal
-  padding-top: 91px
-  padding-bottom: 94px
+  // padding-top: 91px
+  // padding-bottom: 94px
   // margin-top: 100px
   // background-color: #191c23
   position: relative
   background-color: $indigo
-  background-image: url(../images/personal/personal-img.png)
-  background-repeat: no-repeat
-  background-position: top right
-  background-size: 60% 78%
+  // background-image: url(../images/personal/personal-img.png)
+  // background-repeat: no-repeat
+  // background-position: top right
+  // background-size: 60% 78%
   &::before 
     position: absolute
     content: ''
@@ -23,6 +23,43 @@
     // clip-path: circle(55% at 0 105%)
     -webkit-clip-path: circle(50% at 22% 98%)
     clip-path: circle(50% at 8% 98%)
+
+  .carousel
+    height: 600px
+    // margin-top: 91px
+    // margin-bottom: 94px
+    &-inner
+      height: 100%
+    .carousel-control-prev, .carousel-control-next
+      background-color: #fcfcfc
+      width: 60px
+      height: 60px
+      border-radius: 50%
+      top: 50%
+      opacity: 1
+      span 
+        background-repeat: no-repeat
+        background-position: center center 
+        background-size: 100% 100%
+        width: 13px
+        height: 24px
+
+    .carousel-control-prev
+      left: unset
+      right: 800px
+      span 
+        background-image: url(../images/personal/arrow-l.png)
+        
+
+    
+    .carousel-control-next
+      top: 60%
+      right: 760px
+      span 
+        background-image: url(../images/personal/arrow-r.png)
+        
+      // right: 500px
+
   // opacity: .65
 
   // &::before
@@ -42,19 +79,43 @@
   
   &-wrapper 
     // padding: 39px 0px 130px 0px
-    // position: relative
+    position: relative
+    // .container > .row 
+    //   height: 100%
+    img 
+      position: absolute
+      right: 0
+      top: 0
+    .carousel 
+      height: 600px
+      
+      &-inner, &-item
+        height: 100%
+      &-caption 
+        position: relative
+        left: 0
+        bottom: unset
+        top: 0
+
+      
+            
+        
 
   .section
     &-title
       line-height: 32px
       color: $white
       margin-bottom: 17px
+      text-align: left
+      margin-top: 91px
 
     &-subtitle
       color:  #dadada
       font-size: 14px/* Приближение из-за подстановки шрифтов */
       font-weight: 300
       line-height: 22px/* Приближение из-за подстановки шрифтов */
+      text-align: left
+      margin-top: 25px
       &:first-child
         margin-top: 39px
 
@@ -66,6 +127,7 @@
     font-size: 14px/* Приближение из-за подстановки шрифтов */
     font-weight: 300
     line-height: 28px/* Приближение из-за подстановки шрифтов */
+    text-align: left
     
   &-features
     margin-top: 44px
@@ -109,13 +171,15 @@
           transform: rotate(90deg)
           
   .button 
-    margin-top: 45px
+    margin-top: 0px
+    margin-bottom: 100px
     padding: 22px 60px
 
   &-image
-    
-    
-
-    img
+    margin-top: 91px
+    &-wrapper
+      img
+        // margin-top: 91px
+        position: relative
        
 
