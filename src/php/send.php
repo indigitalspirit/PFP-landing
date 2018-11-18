@@ -1,7 +1,6 @@
 <?php 
 
-if(isset($_POST["phone"])) {
-
+if(isset($_POST["user_phone"])) {
   // configure
   $from = 'anastasia-pavlova.com';
   $sendTo = 'nastya-pavlova-93@yandex.ru'; // Add Your Email
@@ -14,7 +13,7 @@ if(isset($_POST["phone"])) {
 
   // let's do the sending
 
-  $user_phone = htmlentities($_POST['phone']);
+  $user_phone = htmlentities($_POST['user_phone']);
 
   try
   {
@@ -55,15 +54,6 @@ if(isset($_POST["phone"])) {
   else {
       echo $responseArray['message'];
   }
-
- if ( 0 < $_FILES['file']['error'] ) {
-    $responseArray['message'] = 'file problems';
-    echo $responseArray['message'];
-  }
-   else {
-   move_uploaded_file($_FILES['file']['tmp_name'], '../uploads/' . $_FILES['file']['name']);
-  }
-
 }
 else {
   $responseArray = array('type' => 'danger', 'message' => 'empty POST');
@@ -71,5 +61,6 @@ else {
 
 }
 
-  
+
+
 ?>

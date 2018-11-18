@@ -222,26 +222,28 @@
           <div class="modal-subtitle">
               Как вам удобнее связаться?
           </div>
-          <input type="text" class="modal-input" placeholder="+7 (___) ___-__-__">
-          <div class="modal-body__buttons">
-            <div class="row">
-              <div class="col-6 text-right pr-2">
-                <button class="button button-c">Позвонить</button>
-              </div>
-              <div class="col-6 text-left pl-2">
-                <button class="button button-o">НАПИСАТЬ В <span>WhatsApp</span></button>
-
-              </div>
-            </div>
-              
-            </div>
+          <form action="" method="post">
+              <input type="text" class="modal-input" placeholder="+7 (___) ___-__-__">
+              <div class="modal-body__buttons">
+                <div class="row">
+                  <div class="col-6 text-right pr-2">
+                    <button class="button button-c mainModal__call" type="submit">Позвонить</button>
+                  </div>
+                  <div class="col-6 text-left pl-2">
+                    <button class="button button-o">НАПИСАТЬ В <span>WhatsApp</span></button>
+    
+                  </div>
+                </div>
+                  
+                </div>
+          </form>
+          
 
         </div>
 
       </div>
     </div>
   </div>
-
 
 
 
@@ -412,6 +414,47 @@
 
   
 
+  <!-- Modal Upload -->
+  <div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="uploadModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+          
+          <div class="modal-body">
+            <div class="modal-title">
+                Потребуется уточнить <br> несколько параметров
+            </div>
+            <div class="modal-subtitle">
+                Как вам удобнее связаться?
+            </div>
+            <form method="post">
+
+                <input type="text" class="modal-input" placeholder="+7 (___) ___-__-__">
+                <div class="modal-body__buttons">
+                  <div class="row">
+                    <div class="col-6 text-right pr-2">
+                      <button class="button button-c uploadModal__call" type="submit">Позвонить</button>
+                    </div>
+                    <div class="col-6 text-left pl-2">
+                      <button class="button button-o">НАПИСАТЬ В <span>WhatsApp</span></button>
+                    </div>
+                  </div>
+                </div>
+
+            </form>
+            
+  
+          </div>
+  
+        </div>
+      </div>
+    </div>
+
   <section class="project">
     <div class="container">
       <form class="project-form" method="post">
@@ -424,7 +467,7 @@
                 <div class="section-subtitle">
                     Просто сбросьте файл в окошко справа и мы <br> оперативно сделаем для вас расчет в 3 вариантах.
                 </div>
-                <button class="button button-c project-form__button" type="submit">РАССЧИТАТЬ МОЙ ПРОЕКТ</button>
+                <a class="button button-c project-form__button"  data-toggle="modal" data-target="#uploadModal">РАССЧИТАТЬ МОЙ ПРОЕКТ</a>
               </div>
             </div>
     
@@ -433,7 +476,7 @@
                   <div class="project-doc__upload">
                     <div class="project-doc__upload-block">
                         <input type="file" name="file" id="file" class="inputfile" />
-                        <label for="file"></label>
+                        <label for="file" class="inputfile__label"></label>
                       
                         <!-- <img src="images/tz/folder.svg" alt="ТЗ"> -->
                         <div class="project-doc__upload-txt">
@@ -1674,7 +1717,7 @@
               Политика конфиденциальности
           </div>
           <div class="footer-link">
-            Сделано в студии <a href="">london</a href="">
+            Сделано в студии <a href="//vk.com/id23159019" target="_blank">london</a>
           </div>
           
 
@@ -1691,6 +1734,42 @@
       </div>
     </div>
   </footer>
+
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript" >
+    (function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+    try {
+    w.yaCounter51137339 = new Ya.Metrika2({
+    id:51137339,
+    clickmap:true,
+    trackLinks:true,
+    accurateTrackBounce:true,
+    webvisor:true
+    });
+    } catch(e) { }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+    s = d.createElement("script"),
+    f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = "https://mc.yandex.ru/metrika/tag.js";
+
+    if (w.opera == "[object Opera]") {
+    d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+    })(document, window, "yandex_metrika_callbacks2");
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/51137339" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+  <!-- BEGIN JIVOSITE CODE {literal} -->
+  <script type='text/javascript'>
+  (function(){ var widget_id = 'dNwOuxteTL';var d=document;var w=window;function l(){
+  var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = '//code.jivosite.com/script/widget/'+widget_id; var ss = document.getElementsByTagName('script')[0]; ss.parentNode.insertBefore(s, ss);}if(d.readyState=='complete'){l();}else{if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();</script>
+  <!-- {/literal} END JIVOSITE CODE -->
 
   <!-- jQuery v3 -->
   <script

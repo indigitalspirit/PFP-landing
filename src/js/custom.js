@@ -8,6 +8,135 @@ $(document).ready(function(){
     // $('#main-form__input').mask("+7 (999) 999-99-99",{placeholder:"+7 (XXX) XXX-XX-XX"});
   });
 
+  //$('#optionsForm').validator();
+
+
+  function sendAjaxForm(url, form, modal) {
+    console.log(url, form);
+    $.ajax({
+      url:     url, //url страницы 
+      type:     "POST", //метод отправки
+      data: $(form).serialize(),
+      // dataType: "html", //формат данных
+      // data: $(form).serialize(),  // Сеарилизуем объект
+      success: function(response) { //Данные отправлены успешно
+
+        var messageText = response.message;
+        console.log('Ок. Данные отправлены ' + messageText);
+
+        $(modal).find('.content').css({'display': 'none', 'transition': 'display .5s'});
+        $(modal).find('.content__sent').css({'display': 'block', 'transition': 'display 1s'});
+        $(form).find('label.user_phone').css({'color': '#ffffff'});
+        $(form)[0].reset();
+        
+  
+      },
+
+      error: function(response) { // Данные не отправлены
+          console.log('Ошибка. Данные не отправлены.'+response.responseText);
+          /*** Вызываем окно ошибки */
+          // $('.modal-error').fadeIn();
+         
+      } 
+  });
+  }
+
+  function validateForm(form) {
+    //TODO: fadein\fadeout\buttons disabled
+    var user_name = form.find("input[name='user_phone']").val();
+    return user_name;
+
+  }
+
+  $('.content__sent button.close').on("click", function(e) {
+    //e.preventDefault();
+    console.log('modal closed');
+    var modal =  $(this).closest('.modal');
+
+    $(modal).find('.content').css({'display': 'block', 'transition': 'display .5s'});
+    $(modal).find('.content__sent').css({'display': 'none', 'transition': 'display 1s'});
+  
+    return true; 
+  });
+  $('.content button.close').on("click", function(e) {
+    //e.preventDefault();
+    console.log('modal closed');
+    var modal =  $(this).closest('.modal');
+
+    $(modal).find('label.user_phone').css({'color': '#ffffff'});
+  
+    return true; 
+  });
+
+
+  $( "input[name='user_phone']").keydown(function() {
+    //console.log( "keydown" );
+   
+    var modal =  $(this).closest('.modal');
+    $(modal).find('label.user_phone').css({'color': '#ffffff'});
+    // user_name_label = $(this).parent().find('label.user_name');
+    //   if(user_name_label) {
+    //       //console.log('user_name_label '+ user_name_label);
+    //       user_name_label.css('color', 'transparent');
+    //       $(this).css('border-color', '#777777');
+    //   }
+    //   else {
+    //       //console.log('Не могу получить user_name_label');
+    //   }
+      
+      
+  });
+  
+
+  $('.optionsModal__call').on("click", function(e) {
+    e.preventDefault();
+    console.log('modal options call');
+
+    var form = $(this).closest('form');
+    var url = 'php/send.php';
+    var modal =  $(this).closest('#optionsModal');
+
+    //console.log('modal', modal);
+
+    if(validateForm(form)) {
+
+      sendAjaxForm(url, form, modal);
+      
+    }
+    else {
+      $(form).find('label.user_phone').css({'color': 'red', 'transition': 'color .3s'});
+    }
+  
+    return false; 
+  });
+
+
+  $('.mainModal__call').on("click", function(e) {
+    e.preventDefault();
+    console.log('modal main call');
+
+    var form = $(this).closest('form');
+    var url = 'php/send.php';
+    var modal =  $(this).closest('#mainModal');
+
+    //console.log('modal', modal);
+
+    if(validateForm(form)) {
+
+      sendAjaxForm(url, form, modal);
+      
+    }
+    else {
+      $(form).find('label.user_phone').css({'color': 'red', 'transition': 'color .3s'});
+    }
+  
+    return false; 
+  });
+
+
+
+
+
 
 
 
@@ -46,7 +175,29 @@ $(document).ready(function(){
 
 //Clicks
 
-$('.uploadModal__button').on("click", function(e) {
+// $('.optionsModal__call').on("click", function(e) {
+//   e.preventDefault();
+//   console.log('modal options call');
+
+//   var form = $(this).closest('form');
+//   var url = 'php/send.php';
+//   var modal =  $(this).closest('#optionsModal');
+
+//   //console.log('modal', modal);
+
+//   if(validateForm(form)) {
+
+//     sendAjaxForm(url, form, modal);
+    
+//   }
+//   else {
+//     $(form).find('label.user_phone').css({'color': 'red', 'transition': 'color .3s'});
+//   }
+
+//   return false; 
+// });
+
+$('.uploadModal__bton').on("click", function(e) {
   e.preventDefault();
   console.log('click modal');
 
@@ -58,66 +209,63 @@ $('.uploadModal__button').on("click", function(e) {
 });
 
 
-$('.mainModal__call').on("click", function(e) {
-  e.preventDefault();
-  console.log('modal main call');
-
-
-  return false; 
-});
 
 $('.uploadModal__call').on("click", function(e) {
   e.preventDefault();
   console.log('modal upload call');
 
-  var form_data = new FormData();
 
-  var file_doc = $('.inputfile').prop('files')[0];
+  var form = $(this).closest('form');
+  var modal =  $(this).closest('#uploadModal');
 
-  if(!file_doc) {
-    console.log('empty upload file');
-    // $('.inputfile__label').text("Прикрепите файл");
-    // $('.inputfile__label').css('color', 'red');
 
-  } 
-  else {
+    var file_doc = $('.inputfile').prop('files')[0];
+    var form_data = new FormData();
     form_data.append('file', file_doc);
-  }
+    
 
+    if(validateForm(form)) {
+      var userPhone = $(form).find('input').val();
+      console.log(userPhone);
+      form_data.append('phone', userPhone);
+      console.log(form_data[0], form_data[1]);
+      
+    
+      $.ajax({
+        url: 'php/upload.php',
+        //dataType: 'text',
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: form_data,
+        type: 'post',
+        success: function(response){
+            //alert(php_script_response);
+            console.log('uploaded');
+            var messageText = response.message;
+            console.log('Ок. Данные отправлены ' + messageText);
+
+            $(modal).find('.content').css({'display': 'none', 'transition': 'display .5s'});
+            $(modal).find('.content__sent').css({'display': 'block', 'transition': 'display 1s'});
+            $(form).find('label.user_phone').css({'color': '#ffffff'});
+            $(form)[0].reset();
+        },
+        error: function(response) { // Данные не отправлены
+          console.log('Ошибка. Данные не отправлены.'+response.responseText);
+          /*** Вызываем окно ошибки */
+          // $('.modal-error').fadeIn();
+        
+      } 
+      });
+      
+    }
+    else {
+      $(form).find('label.user_phone').css({'color': 'red', 'transition': 'color .3s'});
+    }
+
+    return false; 
 
   
-
-//   var data_to_select = {
-//     'device_model': device_model,
-//     'device_type': device_type
-// };
-
-
-  $.ajax({
-      url: 'php/upload.php',
-      dataType: 'text',
-      cache: false,
-      contentType: false,
-      processData: false,
-      data: form_data,
-      // data: $(form).serialize(),  // Сеарилизуем объект
-      // dataType: "json", //формат данных
-      // data: $.param(data_to_select), 
-      type: 'post',
-      success: function(php_script_response){
-          //alert(php_script_response);
-          console.log(' Данные загружены.');
-          $('#uploadModal').modal('hide');
-      },
-
-      error: function(response) { // Данные не отправлены
-          console.log('Ошибка. Данные не отправлены.'+response.responseText);
-      }
-
-    });
-
-
-  return false; 
 });
 
   $('.project-form__buton').on("click", function() {
