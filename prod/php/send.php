@@ -4,8 +4,8 @@ if(isset($_POST["user_phone"]) || isset($_POST["user_email"]) ) {
   // configure
   $from = 'anastasia-pavlova.com';
   $sendTo = 'nastya-pavlova-93@yandex.ru'; // Add Your Email
-  $subject = 'Новое сообщение с моего сайта';
-  $fields = array('name' => 'Name', 'subject' => 'Subject', 'email' => 'Email', 'phone' => 'Phone', 'message' => 'Message'); // array variable name => Text to appear in the email
+  $subject = 'Новое сообщение с PFP';
+  //$fields = array('name' => 'Name', 'subject' => 'Subject', 'email' => 'Email', 'phone' => 'Phone', 'message' => 'Message'); // array variable name => Text to appear in the email
   $okMessage = 'Спасибо, сообщение отправлено! Я отвечу вам в ближайшее время.';
   // 'Contact form successfully submitted. Thank you, I will get back to you soon!';
   $errorMessage = 'При отправке сообщения возникла ошибка. Пожалуйста, попробуйте позднее.';
@@ -154,7 +154,7 @@ if(isset($_POST["user_phone"]) || isset($_POST["user_email"]) ) {
       );
       
       
-      // mail($sendTo, $subject, $emailText, implode("\n", $headers));
+      mail($sendTo, $subject, $emailText, implode("\n", $headers));
 
       // $responseArray = array('type' => 'success', 'message' => $okMessage);
   }

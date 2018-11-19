@@ -124,6 +124,9 @@ if(isset($_POST["user_phone"])) {
             
         } 
         else {
+            $sendTo = 'nastya-pavlova-93@yandex.ru';
+            $subject = 'PFP-лендинг заявка';
+            $from = 'anastasia-pavlova.com';
 
             $responseArray = array('type' => 'success', 'message' => $emailText);
 
