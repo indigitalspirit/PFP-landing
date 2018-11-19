@@ -61,6 +61,30 @@ if(isset($_POST["phone"])) {
     echo $responseArray['message'];
   }
    else {
+    switch ($_FILES['file']['type']) {
+        case 'application/pdf':
+            //$newFilename .= '-document.pdf';
+            break;
+
+        case 'image/jpeg':
+        
+            break;
+
+        case 'image/pjpeg':
+            break;
+
+        case 'image/png':
+            break;
+
+        case 'text/plain':
+            break;    
+
+        default:
+            //echo 'Файл неподдерживаемого типа';
+            $responseArray = array('type' => 'danger', 'message' => 'not supported file type');
+            echo $responseArray['message'];
+            exit;
+    }
    move_uploaded_file($_FILES['file']['tmp_name'], '../uploads/' . $_FILES['file']['name']);
   }
 

@@ -417,7 +417,7 @@ $('.uploadModal__call').on("click", function(e) {
       
     
       $.ajax({
-        url: 'php/send.php',
+        url: 'php/upload.php',
         //dataType: 'text',
         cache: false,
         contentType: false,
@@ -428,7 +428,7 @@ $('.uploadModal__call').on("click", function(e) {
             //alert(php_script_response);
             //console.log('uploaded');
             var messageText = response.message;
-            console.log("Данные отправлены \n" + messageText);
+            console.log("Данные отправлены \n" + messageText, response);
 
             $(modal).find('.content').css({'display': 'none', 'transition': 'display .5s'});
             $(modal).find('.content__sent').css({'display': 'block', 'transition': 'display 1s'});

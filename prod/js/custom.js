@@ -428,7 +428,7 @@ $('.uploadModal__call').on("click", function(e) {
             //alert(php_script_response);
             //console.log('uploaded');
             var messageText = response.message;
-            console.log("Данные отправлены \n" + messageText);
+            console.log("Данные отправлены \n" + messageText, response);
 
             $(modal).find('.content').css({'display': 'none', 'transition': 'display .5s'});
             $(modal).find('.content__sent').css({'display': 'block', 'transition': 'display 1s'});
@@ -517,35 +517,181 @@ $('.uploadModal__whatsapp').on("click", function(e) {
 ///////////////////////
 ////////////////////////
 
-  $('.project-form__buton').on("click", function() {
+  
+
+
+  
+  $('.calcModal__call').on("click", function(e) {
  
+    e.preventDefault();
+
     //e.preventDefault();
+    console.log('modal calc');
 
-    //console.log('upload started');
-    //TODO validation upload file
-    var file_doc = $('.inputfile').prop('files')[0];
 
-    if(!file_doc) {
-      console.log('empty upload');
-      // $('.inputfile__label').text("Прикрепите файл");
-      // $('.inputfile__label').css('color', 'red');
+    var form = $(this).closest('form');
+    var modal =  $(this).closest('#calcModal');
 
-    } 
-    // else {
-      $('#uploadModal').modal('show');
-    // }
+
+
+    if(validateForm(form)) {
+      var form_data = new FormData();
+
+      var userPhone = $(form).find('input').val();
+      var square = $('#calc-form').find('input#input_square').val();
+      var baget = $('#calc-form').find('input#input_baget').val();
+      var material = $('#calc-form').find('select#input_material').val();
+      var time = $('#calc-form').find('input#input_time').val();
+      var remarkData = "calc";
+
+      console.log(square, baget, material, time, remarkData);
+
+      form_data.append('user_phone', userPhone);
+      form_data.append('options', remarkData);
+      form_data.append('square', square);
+      form_data.append('baget', baget);
+      form_data.append('material', material);
+      form_data.append('time', time);
+
       
 
-    //submitUpload();
+      //console.log(form_data[0], form_data[1]);
+      
+    
+      $.ajax({
+        url: 'php/send.php',
+        //dataType: 'text',
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: form_data,
+        type: 'post',
+        success: function(response){
+            //alert(php_script_response);
+            //console.log('uploaded');
+            var messageText = response.message;
+            console.log("Данные отправлены \n" + messageText);
+
+            $(modal).find('.content').css({'display': 'none', 'transition': 'display .5s'});
+            $(modal).find('.content__sent').css({'display': 'block', 'transition': 'display 1s'});
+            $(form).find('label.user_phone').css({'color': '#ffffff'});
+            $(form)[0].reset();
+            $('#calc-form')[0].reset(); 
+            $('#calc-form output.baget').val(30000); 
+            $('#calc-form output.square').val(0); 
+            $('#calc-form output').css('left', '0'); 
 
 
+        },
+        error: function(response) { // Данные не отправлены
+          console.log('Ошибка. Данные не отправлены.'+response.responseText);
+          /*** Вызываем окно ошибки */
+          // $('.modal-error').fadeIn();
+        
+      } 
+      });
+      
+    }
+    else {
+      $(form).find('label.user_phone').css({'color': 'red', 'transition': 'color .3s'});
+    }
+
+  
+    return false; 
+
+  });
+
+  $('.calcModal__whatsapp').on("click", function(e) {
+ 
+    e.preventDefault();
+
+    //e.preventDefault();
+    console.log('modal calc');
+
+
+    var form = $(this).closest('form');
+    var modal =  $(this).closest('#calcModal');
+
+
+
+    if(validateForm(form)) {
+      var form_data = new FormData();
+
+      var userPhone = $(form).find('input').val();
+      var square = $('#calc-form').find('input#input_square').val();
+      var baget = $('#calc-form').find('input#input_baget').val();
+      var material = $('#calc-form').find('select#input_material').val();
+      var time = $('#calc-form').find('input#input_time').val();
+      var remarkData = "calc";
+
+      console.log(square, baget, material, time, remarkData);
+
+      form_data.append('user_phone', userPhone);
+      form_data.append('options', remarkData);
+      form_data.append('whatsapp', 'call');
+      form_data.append('square', square);
+      form_data.append('baget', baget);
+      form_data.append('material', material);
+      form_data.append('time', time);
+
+      
+
+      //console.log(form_data[0], form_data[1]);
+      
+    
+      $.ajax({
+        url: 'php/send.php',
+        //dataType: 'text',
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: form_data,
+        type: 'post',
+        success: function(response){
+            //alert(php_script_response);
+            //console.log('uploaded');
+            var messageText = response.message;
+            console.log("Данные отправлены \n" + messageText);
+
+            $(modal).find('.content').css({'display': 'none', 'transition': 'display .5s'});
+            $(modal).find('.content__sent').css({'display': 'block', 'transition': 'display 1s'});
+            $(form).find('label.user_phone').css({'color': '#ffffff'});
+            $(form)[0].reset();
+            $('#calc-form')[0].reset();  
+            $('#calc-form output.baget').val(30000); 
+            $('#calc-form output.square').val(0); 
+            $('#calc-form output').css('left', '0'); 
+        },
+        error: function(response) { // Данные не отправлены
+          console.log('Ошибка. Данные не отправлены.'+response.responseText);
+          /*** Вызываем окно ошибки */
+          // $('.modal-error').fadeIn();
+        
+      } 
+      });
+      
+    }
+    else {
+      $(form).find('label.user_phone').css({'color': 'red', 'transition': 'color .3s'});
+    }
+
+  
     return false; 
 
   });
 
 
+  //////////////////////////
+  ///////////////////////
 
 
+  // $('.calc-form__button').on("click", function(e) {
+ 
+  //   e.preventDefault();
+
+  //   var user_name = form.find("input[name='user_phone']").val();
+
+  // });
 
   $(".floors-features .nav-link").click(
     function(){

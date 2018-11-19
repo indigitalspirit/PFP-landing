@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,6 +18,8 @@
   <link rel="stylesheet" type="text/css" media="screen" href="css/fonts.css" />
   <!-- Custom styles -->
   <link rel="stylesheet" type="text/css" media="screen" href="css/styles.css" />
+
+  
 
 </head>
 <body>
@@ -58,7 +60,7 @@
             <div class="main-txt">
               <div class="row">
                 <div class="col-8">
-                    <div class="main-txt__title">Минимум на 3% перебьем любую <br> конкурентную цену на промышленные полы </div>
+                    <h1 class="main-txt__title">Минимум на 3% перебьем любую <br> конкурентную цену на промышленные полы </h1>
                     <div class="main-txt__subtitle">Без потери качества. Гарантия на работу <span>4</span> года.</div>
                   <div class="main-txt__pros">
                     <div class="row">
@@ -205,7 +207,7 @@
   </section>
 
   <!-- Main Modal -->
-  <div class="modal fade" id="mainModal" tabindex="-1" role="dialog" aria-labelledby="mainModalLabel" aria-hidden="true">
+  <div class="modal fade" id="mainModal" tabindex="-1" role="dialog"  aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="content">
@@ -224,9 +226,9 @@
                 <div class="modal-subtitle">
                     Как вам удобнее связаться?
                 </div>
-                <form action="" method="post" id="mainForm">
-                    <label for="user_phone" class="user_phone">Введите номер телефона</label>
-                    <input type="text" class="modal-input" name="user_phone" placeholder="+7 (___) ___-__-__">
+                <form method="post" id="mainForm">
+                    <label for="user_phone_main" class="user_phone">Введите номер телефона</label>
+                    <input type="text" class="modal-input" id="user_phone_main" name="user_phone" placeholder="+7 (___) ___-__-__">
                     <div class="modal-body__buttons">
                       <div class="row">
                         <div class="col-6 text-right pr-2">
@@ -275,9 +277,9 @@
     <div class="container">
       <div class="row">
         <div class="col-12">
-          <div class="section-title">
+          <h2 class="section-title">
               Что конкретно необходимо сделать?
-          </div>
+          </h2>
           <div class="section-subtitle">
               Уточните свою потребность и сразу получите ценовое предложение:
           </div>
@@ -314,58 +316,117 @@
     </div>
   </section>
 
+  <!-- Main Modal -->
+  <div class="modal fade" id="calcModal" tabindex="-1" role="dialog"  aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="content">
+            <div class="modal-header">
+              
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+          
+          <div class="modal-body">
+            <div class="modal-regular">
+                <div class="modal-title">
+                    Потребуется уточнить <br> несколько параметров
+                </div>
+                <div class="modal-subtitle">
+                    Как вам удобнее связаться?
+                </div>
+                <form method="post" id="calcForm">
+                    <label for="user_phone_calc" class="user_phone">Введите номер телефона</label>
+                    <input type="text" class="modal-input" id="user_phone_calc" name="user_phone" placeholder="+7 (___) ___-__-__">
+                    <div class="modal-body__buttons">
+                      <div class="row">
+                        <div class="col-6 text-right pr-2">
+                          <button class="button button-c calcModal__call" type="submit">Позвонить</button>
+                        </div>
+                        <div class="col-6 text-left pl-2">
+                          <button class="button button-o calcModal__whatsapp" type="submit">НАПИСАТЬ В <span>WhatsApp</span></button>
+          
+                        </div>
+                      </div>
+                        
+                      </div>
+                </form>
+            </div>
+  
+          </div>
+        </div>
+      
+        <div class="content__sent">
+            <div class="modal-header">
+                
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+          
+          <div class="modal-body">
+            <div class="modal-sent">
+                <div class="modal-title">
+                    Спасибо за завку!
+                </div>
+                <div class="modal-subtitle">
+                    Мы свяжемся с Вами <br> в ближайшее время.
+                </div>
+            </div>
+          </div>
+
+        </div>
+    </div>
+    </div>
+  </div>
+
   <section class="calculations">
     <div class="container">
       <div class="row">
         <div class="col-12">
-            <div class="section-title">
+            <h2 class="section-title">
                 Введите данные и получите Расчет прямо сейчас:
-            </div>
+            </h2>
             <div class="section-subtitle">
                 Впишите параметры, которые вам известны И понятны, остальные поля оставьте пустыми
             </div>
           
-          <form class="calculations-form">
+          <form class="calculations-form" id="calc-form" method="post">
             
-            <div class="calculations-form__baget">
+            <div class="calculations-form__square">
               <label for="input_square" class="square">
                 Площадь по полу:
               </label> 
-              <input type="range" list="volsettings" max="200" step="1" min="0" max="100" value="0" id="input_square" name="square"/>
-              <!-- <datalist id=volsettings>
-                  <option value="0"/>
-                  <option value="20"/>
-                  <option value="45"/>
-                  <option value="60"/>
-                  <option value="90"/>
-                  <option value="120"/>
-              </datalist> -->
+              <input type="range"  step="10" min="0" max="40000" value="0" id="input_square" name="square" data-thumbwidth="10"/>
+              <output name="rangeVal" class="calculations-form__square-output square">0</output>
+            
             </div>
 
-            <div class="calculations-form__square">
+            <div class="calculations-form__baget">
               <label for="input_baget" class="baget">
                 Доступный бюджет:
               </label>
-              <input type="range" step="1"  value="0" id="input_baget" name="baget"/>
-
+              <input type="range" step="5" min="30000" max="10000000" value="0" id="input_baget" name="baget" data-thumbwidth="5"/>
+              <output name="rangeVal" class="calculations-form__baget-output baget">30 000</output>
             </div>
 
             <div class="calculations-form__footer">
               <div class="row">
                 <div class="col-3">
                     <div class="calculations-form__select">
-                        <label for="input_select" class="select">
+                        <label for="input_material" class="select">
                           Материал покрытия
                         </label>
                         <div class="calculations-form__select-wrapper">
-                          <select name="theme" class="input_select" id="input_select">
-                            <option value="light">бетонные</option>
-                            <option value="dark">эпоксидные</option>
-                            <option value="light">полиуретановые</option>
-                            <option value="dark">высоконаполненные</option>
-                            <option value="light">химстойкие</option>
-                            <option value="dark">полимербетон</option>
-                            <option value="light">полимерные краски</option>
+                          <select name="material" class="input_select" id="input_material">
+                            <option>бетонные</option>
+                            <option>эпоксидные</option>
+                            <option>полиуретановые</option>
+                            <option>высоконаполненные</option>
+                            <option>химстойкие</option>
+                            <option>полимербетон</option>
+                            <option>полимерные краски</option>
                             
                         </select>
                         </div>
@@ -382,9 +443,9 @@
                 </div>
                 <div class="col-6 text-right">
                     <div class="calculations-form__button">
-                        <button class="button button-c" >
+                        <a class="button button-c calc-form__button" data-toggle="modal" data-target="#calcModal">
                           Рассчитать мой проект
-                        </button>
+                        </a>
         
                       </div>
                 </div>
@@ -405,7 +466,7 @@
   </section>
 
   <!-- Tz Modal -->
-  <div class="modal fade" id="tzModal" tabindex="-1" role="dialog" aria-labelledby="tzModalLabel" aria-hidden="true">
+  <div class="modal fade" id="tzModal" tabindex="-1" role="dialog"  aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="content">
@@ -424,9 +485,9 @@
                   <div class="modal-subtitle">
                       Как вам удобнее связаться?
                   </div>
-                  <form action="" method="post" id="tzForm">
-                      <label for="user_phone" class="user_phone">Введите номер телефона</label>
-                      <input type="text" class="modal-input" name="user_phone" placeholder="+7 (___) ___-__-__">
+                  <form method="post" id="tzForm">
+                      <label for="user_phone_tz" class="user_phone">Введите номер телефона</label>
+                      <input type="text" class="modal-input" id="user_phone_tz" name="user_phone" placeholder="+7 (___) ___-__-__">
                       <div class="modal-body__buttons">
                         <div class="row">
                           <div class="col-6 text-right pr-2">
@@ -475,9 +536,9 @@
           <div class="tz-doc">
             <div class="tz-doc__paper">
               <img src="images/tz/tz-doc.png" alt="ТЗ">
-              <div class="tz-doc__paper-txt">
+              <h2 class="tz-doc__paper-txt">
                   Вы сможете им пользоваться <br> не зависимо от того как дальше <br> сложатся наши отношения
-              </div>
+              </h2>
             </div>
             
           </div>
@@ -497,13 +558,14 @@
         
        
       </div>
+    </div>
       
   </section>
 
   
 
   <!-- Modal Upload -->
-  <div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="uploadModalLabel" aria-hidden="true">
+  <div class="modal fade" id="uploadModal" tabindex="-1" role="dialog"  aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="content">
@@ -522,9 +584,9 @@
                     <div class="modal-subtitle">
                         Как вам удобнее связаться?
                     </div>
-                    <form action="" method="post" id="uploadForm">
-                        <label for="user_phone" class="user_phone">Введите номер телефона</label>
-                        <input type="text" class="modal-input" name="user_phone" placeholder="+7 (___) ___-__-__">
+                    <form method="post" id="uploadForm">
+                        <label for="user_phone_upl" class="user_phone">Введите номер телефона</label>
+                        <input type="text" class="modal-input" id="user_phone_upl" name="user_phone" placeholder="+7 (___) ___-__-__">
                         <div class="modal-body__buttons">
                           <div class="row">
                             <div class="col-6 text-right pr-2">
@@ -574,9 +636,9 @@
           <div class="row">      
             <div class="col-5 my-auto text-left pr-0 pl-0">
               <div class="project-txt">
-                <div class="section-title">
+                <h2 class="section-title">
                     Есть проект или заявка?
-                </div>
+                </h2>
                 <div class="section-subtitle">
                     Просто сбросьте файл в окошко справа и мы <br> оперативно сделаем для вас расчет в 3 вариантах.
                 </div>
@@ -607,16 +669,14 @@
             </div>
           </div>
       </form>
-      
+   
+    </div>
       
   </section>
 
 
-
- 
-
   <section class="personal">
-    <form action="">
+    <form>
       <div id="carouselExampleIndicators" class="carousel slide" data-ride="false">
         <div class="carousel-inner">
           <div class="carousel-item active">
@@ -630,9 +690,9 @@
                     <div class="row">
                       <div class="col-5 text-left pl-0">
                         <div class="carousel-caption d-none d-md-block">
-                          <div class="section-title">
+                          <h2 class="section-title">
                             Частный <br> дом
-                          </div>
+                          </h2>
                           <div class="section-subtitle">
                             Ленинградская область, д.Глубокое
                           </div>
@@ -718,9 +778,9 @@
                       <div class="row">
                         <div class="col-5 text-left pl-0">
                           <div class="carousel-caption d-none d-md-block">
-                            <div class="section-title">
+                            <h2 class="section-title">
                               Главный офис компании <br> Sport Life
-                            </div>
+                            </h2>
                             <div class="section-subtitle">
                                 Санкт-Петербург,ул. Маршала Захарова.
                             </div>
@@ -805,9 +865,9 @@
                       <div class="row">
                         <div class="col-5 text-left pl-0">
                           <div class="carousel-caption d-none d-md-block">
-                            <div class="section-title">
+                            <h2 class="section-title">
                                 Фабрика картонно-бумажных  <br> изделий
-                            </div>
+                            </h2>
                             <div class="section-subtitle">
                               Ленинградская область, Малое Верево
                             </div>
@@ -891,9 +951,9 @@
                       <div class="row">
                         <div class="col-5 text-left pl-0">
                           <div class="carousel-caption d-none d-md-block">
-                            <div class="section-title">
+                            <h2 class="section-title">
                                 Пивоваренная компания  <br> Heiniken
-                            </div>
+                            </h2>
                             <div class="section-subtitle">
                                 Санкт- Петербург, ул. Тельмана 24
                             </div>
@@ -978,9 +1038,9 @@
                       <div class="row">
                         <div class="col-5 text-left pl-0">
                           <div class="carousel-caption d-none d-md-block">
-                            <div class="section-title">
+                            <h2 class="section-title">
                                 ПС - 13 ЛенЭнерго <br> (Васильевский остров) 
-                            </div>
+                            </h2>
                             <div class="section-subtitle">
                                 Санкт - Петербург
                             </div>
@@ -1064,9 +1124,9 @@
                       <div class="row">
                         <div class="col-5 text-left pl-0">
                           <div class="carousel-caption d-none d-md-block">
-                            <div class="section-title">
+                            <h2 class="section-title">
                                 Авиационно ремонтный завод.  <br> Склад готовой продукции.
-                            </div>
+                            </h2>
                             <div class="section-subtitle">
                                 Ленинградская область,  поселок Войсковицы, 218
                             </div>
@@ -1150,9 +1210,9 @@
                       <div class="row">
                         <div class="col-5 text-left pl-0">
                           <div class="carousel-caption d-none d-md-block">
-                            <div class="section-title">
+                            <h2 class="section-title">
                                 Складское помещение  <br> компании Partner Premium
-                            </div>
+                            </h2>
                             <div class="section-subtitle">
                                 Санкт- Петербург, Красное село
                             </div>
@@ -1250,9 +1310,9 @@
     <div class="container">
       <div class="row">
         <div class="col-12 text-center">
-          <div class="section-title"> 
+          <h2 class="section-title"> 
               ООО «ПрофПолимер групп»
-          </div>
+          </h2>
         </div>
       </div>
       <div class="about-items">
@@ -1326,7 +1386,7 @@
 
 
   <!-- Modal Success -->
-  <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
+  <div class="modal fade" id="successModal" tabindex="-1" role="dialog"  aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
           
@@ -1359,11 +1419,11 @@
     <div class="container">
       <div class="row">
         <div class="col-7 text-left">
-          <div class="section-title">Закажите выезд инженера На объект:</div>
+          <h2 class="section-title">Закажите выезд инженера На объект:</h2>
           <div class="section-subtitle">Вместе выберем наполное покрытие, составим смету <br> и точно обо всем договоримся.</div>
-          <form action="" method="post">
+          <form method="post">
             <label for="user_phone" class="user_phone">Введите номер телефона</label>
-              <input type="text" class="contact-form__input" name="user_phone" placeholder="+7 (___) ___-__-__">
+              <input type="text" class="contact-form__input" id="user_phone" name="user_phone" placeholder="+7 (___) ___-__-__">
             
             
             <div class="contact-form__buttons">
@@ -1394,9 +1454,9 @@
     <div class="container">
       <div class="row">
         <div class="col-12 ">
-          <div class="section-title">
+          <h2 class="section-title">
               Наша Команда:
-          </div>
+          </h2>
           <div class="section-subtitle">
               Вы можете напрямую задать вопрос руководству компании:
           </div>
@@ -1542,9 +1602,9 @@
     <div class="container">
       <div class="row">
           <div class="col-6 text-left">
-              <div class="section-title">
+              <h2 class="section-title">
                   Где и почему используют <br> полимерные полы:
-              </div>
+              </h2>
               
               
               <div class="floors-features">
@@ -1644,7 +1704,7 @@
   </section>
 
   <!-- Modal 3 options -->
-  <div class="modal fade" id="optionsModal" tabindex="-1" role="dialog" aria-labelledby="optionsModalLabel" aria-hidden="true">
+  <div class="modal fade" id="optionsModal" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="content">
@@ -1663,9 +1723,9 @@
                   <div class="modal-subtitle">
                       Как вам удобнее связаться?
                   </div>
-                  <form action="" method="post" id="optionsForm">
-                    <label for="user_phone" class="user_phone">Введите номер телефона</label>
-                      <input type="text" class="modal-input" placeholder="+7 (___) ___-__-__" name="user_phone">
+                  <form method="post" id="optionsForm">
+                    <label for="user_phone_opt" class="user_phone">Введите номер телефона</label>
+                      <input type="text" class="modal-input" id="user_phone_opt" placeholder="+7 (___) ___-__-__" name="user_phone">
                       <div class="modal-body__buttons">
                         <div class="row">
                           <div class="col-6 text-right pr-2">
@@ -1713,9 +1773,9 @@
     <div class="container">
       <div class="row">
         <div class="col-12">
-          <div class="section-title">
+          <h2 class="section-title">
               Что лучше?
-          </div>
+          </h2>
         </div>
          
       </div>
@@ -1801,12 +1861,12 @@
         <div class="container">
             <div class="row">
               <div class="col-10 text-left">
-                <div class="section-title">Получите прайс-лист <br>для самостоятельного расчета</div>
+                <h2 class="section-title">Получите прайс-лист <br>для самостоятельного расчета</h2>
                 <div class="section-subtitle">За счет большого объема закупок реальная цена, по которой <br> мы можем поставлять материалы, ниже рыночной на 5%.</div>
-                <form action="" method="post">
+                <form method="post">
                     <div class="pricelist-form__buttons">
                         <label for="user_email" class="user_email">Введите e-mail</label>
-                        <input type="text" class="input_email" name="user_email" placeholder="E-mail">
+                        <input type="text" class="input_email" id="user_email" name="user_email" placeholder="E-mail">
                           
                       
                         <button class="button button-c pricelist-form__call">
@@ -1845,9 +1905,9 @@
       <div class="row">
         <div class="col-3 text-left">
           <div class="map-data">
-              <div class="map-data__title">
+              <h2 class="map-data__title">
                   Головной офис:
-                </div>
+                </h2>
                 
                 <div class="map-data__address">
                     <div class="row">
@@ -1951,8 +2011,12 @@
     </div>
   </footer>
 
+
+
+  
+
   <!-- Yandex.Metrika counter -->
-  <!-- <script type="text/javascript" >
+  <script type="text/javascript" >
     (function (d, w, c) {
     (w[c] = w[c] || []).push(function() {
     try {
@@ -1978,13 +2042,13 @@
     } else { f(); }
     })(document, window, "yandex_metrika_callbacks2");
   </script>
-  <noscript><div><img src="https://mc.yandex.ru/watch/51137339" style="position:absolute; left:-9999px;" alt="" /></div></noscript> -->
-<!-- /Yandex.Metrika counter -->
+  <noscript><div><img src="https://mc.yandex.ru/watch/51137339" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <!-- /Yandex.Metrika counter -->
 
   <!-- BEGIN JIVOSITE CODE {literal} -->
-  <!-- <script type='text/javascript'>
+  <script type='text/javascript'>
   (function(){ var widget_id = 'dNwOuxteTL';var d=document;var w=window;function l(){
-  var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = '//code.jivosite.com/script/widget/'+widget_id; var ss = document.getElementsByTagName('script')[0]; ss.parentNode.insertBefore(s, ss);}if(d.readyState=='complete'){l();}else{if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();</script> -->
+  var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = '//code.jivosite.com/script/widget/'+widget_id; var ss = document.getElementsByTagName('script')[0]; ss.parentNode.insertBefore(s, ss);}if(d.readyState=='complete'){l();}else{if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();</script>
   <!-- {/literal} END JIVOSITE CODE -->
 
   <!-- jQuery v3 -->
@@ -1996,7 +2060,6 @@
 <script>window.jQuery || document.write('<script src="js/jquery-3.3.1.min.js"><\/script>')</script>
 
 
-
 <!-- Bootstrap v4 -->
 <script src="js/bootstrap.min.js"></script>
 
@@ -2005,91 +2068,9 @@
 
 <!-- Custom script -->
 <script src="js/custom.js"></script>
+<script src="js/ranges.js"></script>
 
-<!-- <script>
-ymaps.ready(function () {
-    var myMap = new ymaps.Map('map', {
-            center: [55.751574, 37.573856],
-            zoom: 9
-        }, {
-            searchControlProvider: 'yandex#search'
-        }),
+  
 
-        // Создаём макет содержимого.
-        MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
-            '<div style="color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>'
-        ),
-
-        myPlacemark = new ymaps.Placemark(myMap.getCenter(), {
-            hintContent: 'Собственный значок метки',
-            balloonContent: 'Это красивая метка'
-        }, {
-            // Опции.
-            // Необходимо указать данный тип макета.
-            iconLayout: 'default#image',
-            // Своё изображение иконки метки.
-            iconImageHref: 'images/myIcon.gif',
-            // Размеры метки.
-            iconImageSize: [30, 42],
-            // Смещение левого верхнего угла иконки относительно
-            // её "ножки" (точки привязки).
-            iconImageOffset: [-5, -38]
-        }),
-
-        myPlacemarkWithContent = new ymaps.Placemark([55.661574, 37.573856], {
-            hintContent: 'Собственный значок метки с контентом',
-            balloonContent: 'А эта — новогодняя',
-            iconContent: '12'
-        }, {
-            // Опции.
-            // Необходимо указать данный тип макета.
-            iconLayout: 'default#imageWithContent',
-            // Своё изображение иконки метки.
-            iconImageHref: 'images/ball.png',
-            // Размеры метки.
-            iconImageSize: [48, 48],
-            // Смещение левого верхнего угла иконки относительно
-            // её "ножки" (точки привязки).
-            iconImageOffset: [-24, -24],
-            // Смещение слоя с содержимым относительно слоя с картинкой.
-            iconContentOffset: [15, 15],
-            // Макет содержимого.
-            iconContentLayout: MyIconContentLayout
-        });
-
-    myMap.geoObjects
-        .add(myPlacemark)
-        .add(myPlacemarkWithContent);
-});</script>   -->
-
-
-<!-- Google Map -->
-<!-- <script src="js/google-map.js"></script> -->
-<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfoHxV5lAiqmYPt5n_TcbuiztW8WaMhys&callback=initMap"
-async defer></script>
-<script>
-var map;
-    function initMap() { //61.7918861,34.3731482,17   59.8364597,30.3514637,18
-        var location = {lat: 59.836077, lng: 30.351968};
-        
-        var map = new google.maps.Map(
-                document.getElementById('map'), {
-                    zoom: 17, 
-                    center: location
-            });
-
-        var marker = new google.maps.Marker({
-            position: location, 
-            map: map,
-            title: "Пулковская ул., 10 корпус 2",
-            icon: {
-              url: "images/markers/svg/Arrow_3.svg",
-              scaledSize: new google.maps.Size(64, 64)
-            }
-            //title: address,
-            //animation: google.maps.Animation.BOUNCE 
-        });
-    }
-</script> -->
 </body>
 </html>

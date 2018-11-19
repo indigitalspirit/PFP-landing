@@ -18,6 +18,22 @@ if(isset($_POST["user_phone"]) || isset($_POST["user_email"]) ) {
   if(isset($_POST["user_phone"])) 
     $user_phone = htmlentities($_POST['user_phone']);
 
+
+
+  if(isset($_POST["square"])) 
+    $square = htmlentities($_POST['square']);
+  
+  if(isset($_POST["baget"])) 
+    $baget = htmlentities($_POST['baget']);
+
+  if(isset($_POST["material"])) 
+    $material = htmlentities($_POST['material']);
+
+  if(isset($_POST["time"])) 
+    $time = htmlentities($_POST['time']);
+
+
+
   if(isset($_POST["whatsapp"])) {
     $whatsapp = htmlentities($_POST['whatsapp']);
     
@@ -34,19 +50,13 @@ if(isset($_POST["user_phone"]) || isset($_POST["user_email"]) ) {
   try
   {
       $emailText = "Новое сообщение от PFP-лендинг \n========\n";
-      //"You have new message from contact form\n=============================\n";
-
-      // foreach ($_POST as $key => $value) {
-
-      //     if (isset($fields[$key])) {
-      //         $emailText .= "$fields[$key]: $value\n";
-      //     }
-      // }
+      
       if($user_phone) 
         $emailText .= "Телефон: $user_phone\n";
 
       if($user_email) 
         $emailText .= "Email: $user_email\n";
+
 
       if($whatsapp || $options)
         $emailText .= "======= Примечания =======\n";
@@ -63,6 +73,23 @@ if(isset($_POST["user_phone"]) || isset($_POST["user_email"]) ) {
       if($options === 'tz')
         $emailText .= "Разработка ТЗ\n";
 
+      if($options === 'calc') {
+        $emailText .= "Калькулятор\n";
+        if($square) 
+          $emailText .= "Площадь по полу: $square\n";
+
+        if($baget) 
+          $emailText .= "Бюджет: $baget\n";
+
+        if($time) 
+          $emailText .= "Сроки: $time\n";
+
+        if($material) 
+          $emailText .= "Материал покрытия: $material\n";
+
+      }
+        
+
 
       if($options === 'enginier')
         $emailText .= "Выезд инженера. Позвонить\n";
@@ -70,15 +97,6 @@ if(isset($_POST["user_phone"]) || isset($_POST["user_email"]) ) {
       if($whatsapp === 'enginier') 
         $emailText .= "Выезд инженера. WhatsApp\n";
 
-      // $headers = array('Content-Type: text/plain; charset="UTF-8";',
-      //     'From: ' . $from,
-      //     'Reply-To: ' . $from,
-      //     'Return-Path: ' . $from,
-      // );
-      
-      //mail($sendTo, $subject, $emailText, implode("\n", $headers));
-
-      // $responseArray = array('type' => 'success', 'message' => $okMessage);
 
       //file uploading
 
@@ -92,6 +110,30 @@ if(isset($_POST["user_phone"]) || isset($_POST["user_email"]) ) {
        // exit();
       }
       else {
+        switch ($_FILES['file']['type']) {
+          case 'application/pdf':
+              //$newFilename .= '-document.pdf';
+              break;
+  
+          case 'image/jpeg':
+          
+              break;
+  
+          case 'image/pjpeg':
+              break;
+  
+          case 'image/png':
+              break;
+  
+          case 'text/plain':
+              break;    
+  
+          default:
+              //echo 'Файл неподдерживаемого типа';
+              $responseArray = array('type' => 'danger', 'message' => 'not supported file type');
+              echo $responseArray['message'];
+              exit;
+      }
       move_uploaded_file($_FILES['file']['tmp_name'], '../uploads/' . $_FILES['file']['name']);
       $client_file = $_FILES['file']['name'];
 
@@ -102,6 +144,19 @@ if(isset($_POST["user_phone"]) || isset($_POST["user_email"]) ) {
     }
 
       $responseArray = array('type' => 'success', 'message' => $emailText);
+
+      
+      
+      $headers = array('Content-Type: text/plain; charset="UTF-8";',
+          'From: ' . $from,
+          'Reply-To: ' . $from,
+          'Return-Path: ' . $from,
+      );
+      
+      
+      // mail($sendTo, $subject, $emailText, implode("\n", $headers));
+
+      // $responseArray = array('type' => 'success', 'message' => $okMessage);
   }
   catch (\Exception $e)
   {

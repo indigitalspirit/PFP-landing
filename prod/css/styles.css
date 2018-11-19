@@ -184,7 +184,7 @@ body li {
   border-radius: 30px;
   width: 220px;
   height: 50px;
-  padding: 18px 47px;
+  padding: 18px 20px;
 }
 
 .modal label {
@@ -523,6 +523,7 @@ body li {
 
 .calculations-form__button .button {
   padding: 20px 55px;
+  display: inline-block;
 }
 
 .calculations-form__square input, .calculations-form__baget input, .calculations-form__square label, .calculations-form__baget label, .calculations-form__time label, .calculations-form__time input {
@@ -548,15 +549,22 @@ body li {
   font-weight: 700;
 }
 
+.calculations-form__square, .calculations-form__baget {
+  position: relative;
+}
+
 .calculations-form__square input, .calculations-form__baget input {
   width: 100%;
   margin-top: 25px;
   background-color: #e5e5e5;
+  position: relative;
 }
 
 .calculations-form__square input[type="range"], .calculations-form__baget input[type="range"] {
   -webkit-appearance: none;
   width: 100%;
+  display: block;
+  outline: none;
 }
 
 .calculations-form__square input[type="range"]:focus, .calculations-form__baget input[type="range"]:focus {
@@ -648,7 +656,23 @@ body li {
   background: #367ebd;
 }
 
-.calculations-form__square {
+.calculations-form__square-output, .calculations-form__baget-output {
+  position: absolute;
+  top: 52px;
+  /* display: none */
+  width: 50px;
+  height: 24px;
+  /* border: 1px solid #e2e2e2 */
+  background-color: transparent;
+  /* border-radius: 3px */
+  color: #000000;
+  font-family: Gilroy;
+  font-size: 14px;
+  line-height: 24px;
+  text-align: center;
+}
+
+.calculations-form__baget {
   margin-top: 81px;
 }
 
@@ -678,7 +702,6 @@ body li {
 
 .calculations-form__select-wrapper select:focus {
   outline: none;
-  background-color: #2a93fe;
   color: #ffffff;
 }
 
@@ -1027,6 +1050,7 @@ body li {
 
 .personal-features .col-6:first-child img {
   -webkit-transform: rotate(90deg);
+          -ms-transform: rotate(90deg);
           transform: rotate(90deg);
 }
 
@@ -1306,6 +1330,7 @@ body li {
   background-position: top right;
   background-size: 60% 78%;
   -webkit-transition: background-image .3s;
+  -o-transition: background-image .3s;
   transition: background-image .3s;
 }
 
@@ -1391,6 +1416,7 @@ body li {
   -webkit-clip-path: circle(50% at 50% 100%);
   clip-path: circle(50% at 50% 100%);
   -webkit-transform: rotate(180deg);
+          -ms-transform: rotate(180deg);
           transform: rotate(180deg);
 }
 
@@ -1700,6 +1726,7 @@ body li {
     cursor: pointer;
     -webkit-transition: -webkit-box-shadow .3s;
     transition: -webkit-box-shadow .3s;
+    -o-transition: box-shadow .3s;
     transition: box-shadow .3s;
     transition: box-shadow .3s, -webkit-box-shadow .3s;
   }
@@ -1709,6 +1736,7 @@ body li {
             box-shadow: 0px 5px 29px 0px rgba(40, 145, 251, 0.4);
     -webkit-transition: -webkit-box-shadow .3s;
     transition: -webkit-box-shadow .3s;
+    -o-transition: box-shadow .3s;
     transition: box-shadow .3s;
     transition: box-shadow .3s, -webkit-box-shadow .3s;
   }
@@ -1721,6 +1749,7 @@ body li {
             box-shadow: 0px 5px 29px 0px rgba(40, 145, 251, 0.55);
     -webkit-transition: -webkit-box-shadow .3s;
     transition: -webkit-box-shadow .3s;
+    -o-transition: box-shadow .3s;
     transition: box-shadow .3s;
     transition: box-shadow .3s, -webkit-box-shadow .3s;
   }
@@ -1728,6 +1757,7 @@ body li {
     cursor: pointer;
     color: #2a93fe;
     -webkit-transition: color .3s;
+    -o-transition: color .3s;
     transition: color .3s;
   }
   .personal .carousel .carousel-control-prev:hover, .personal .carousel .carousel-control-next:hover {
@@ -1740,22 +1770,24 @@ body li {
   .map-data__address a:hover, .map-data__phone a:hover, .map-data__email a:hover {
     color: #2a93fe;
     -webkit-transition: color .3;
+    -o-transition: color .3;
     transition: color .3;
   }
   .footer-link a:hover {
     color: #0056b3;
     text-decoration: underline;
     -webkit-transition: color .3;
+    -o-transition: color .3;
     transition: color .3;
   }
   .footer-politics:hover {
     color: #191c23;
     cursor: pointer;
     -webkit-transition: color .3;
+    -o-transition: color .3;
     transition: color .3;
   }
   .footer-img a:hover {
     color: #ffffff;
   }
 }
-/*# sourceMappingURL=styles.css.map */
