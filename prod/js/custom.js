@@ -417,7 +417,7 @@ $('.uploadModal__call').on("click", function(e) {
       
     
       $.ajax({
-        url: 'php/send.php',
+        url: 'php/upload.php',
         //dataType: 'text',
         cache: false,
         contentType: false,
