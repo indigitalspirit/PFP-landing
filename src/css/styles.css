@@ -721,7 +721,6 @@ body li {
   height: 30px;
   top: 3px;
   -webkit-transform: rotate(180deg);
-          -ms-transform: rotate(180deg);
           transform: rotate(180deg);
 }
 
@@ -764,7 +763,6 @@ body li {
   -webkit-clip-path: polygon(0 0, 100% 0%, 100% 92%, 56% 92%, 51% 100%, 46% 92%, 0 92%);
   clip-path: polygon(0 0, 100% 0%, 100% 92%, 56% 92%, 51% 100%, 46% 92%, 0 92%);
   -webkit-transform: rotate(180deg);
-          -ms-transform: rotate(180deg);
           transform: rotate(180deg);
 }
 
@@ -1118,7 +1116,6 @@ body li {
 
 .personal-features .col-6:first-child img {
   -webkit-transform: rotate(90deg);
-          -ms-transform: rotate(90deg);
           transform: rotate(90deg);
 }
 
@@ -1398,7 +1395,6 @@ body li {
   background-position: top right;
   background-size: 60% 78%;
   -webkit-transition: background-image .3s;
-  -o-transition: background-image .3s;
   transition: background-image .3s;
 }
 
@@ -1468,7 +1464,7 @@ body li {
 }
 
 .offer {
-  padding-top: 130px;
+  padding-top: 180px;
   padding-bottom: 160px;
   position: relative;
 }
@@ -1484,7 +1480,6 @@ body li {
   -webkit-clip-path: circle(50% at 50% 100%);
   clip-path: circle(50% at 50% 100%);
   -webkit-transform: rotate(180deg);
-          -ms-transform: rotate(180deg);
           transform: rotate(180deg);
 }
 
@@ -1794,7 +1789,6 @@ body li {
     cursor: pointer;
     -webkit-transition: -webkit-box-shadow .3s;
     transition: -webkit-box-shadow .3s;
-    -o-transition: box-shadow .3s;
     transition: box-shadow .3s;
     transition: box-shadow .3s, -webkit-box-shadow .3s;
   }
@@ -1804,7 +1798,6 @@ body li {
             box-shadow: 0px 5px 29px 0px rgba(40, 145, 251, 0.4);
     -webkit-transition: -webkit-box-shadow .3s;
     transition: -webkit-box-shadow .3s;
-    -o-transition: box-shadow .3s;
     transition: box-shadow .3s;
     transition: box-shadow .3s, -webkit-box-shadow .3s;
   }
@@ -1817,7 +1810,6 @@ body li {
             box-shadow: 0px 5px 29px 0px rgba(40, 145, 251, 0.55);
     -webkit-transition: -webkit-box-shadow .3s;
     transition: -webkit-box-shadow .3s;
-    -o-transition: box-shadow .3s;
     transition: box-shadow .3s;
     transition: box-shadow .3s, -webkit-box-shadow .3s;
   }
@@ -1825,7 +1817,6 @@ body li {
     cursor: pointer;
     color: #2a93fe;
     -webkit-transition: color .3s;
-    -o-transition: color .3s;
     transition: color .3s;
   }
   .personal .carousel .carousel-control-prev:hover, .personal .carousel .carousel-control-next:hover {
@@ -1838,24 +1829,22 @@ body li {
   .map-data__address a:hover, .map-data__phone a:hover, .map-data__email a:hover {
     color: #2a93fe;
     -webkit-transition: color .3;
-    -o-transition: color .3;
     transition: color .3;
   }
   .footer-link a:hover {
     color: #0056b3;
     text-decoration: underline;
     -webkit-transition: color .3;
-    -o-transition: color .3;
     transition: color .3;
   }
   .footer-politics:hover {
     color: #191c23;
     cursor: pointer;
     -webkit-transition: color .3;
-    -o-transition: color .3;
     transition: color .3;
   }
   .footer-img a:hover {
     color: #ffffff;
   }
 }
+/*# sourceMappingURL=styles.css.map */

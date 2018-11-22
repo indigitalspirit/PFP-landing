@@ -4,10 +4,17 @@ if(isset($_POST["user_phone"])) {
     
     try
     {
+
+        //Конфиг для почты 
+        $to = "nastya-pavlova-93@yandex.ru"; //Кому
+        $to_two = "nastya89215244781@yandex.ru"; //Кому
+        $from = "anastasia-pavlova.com"; //От кого
+        $subject = "Загрузка файла на сайте"; //Тема
+
+
         $user_phone = htmlentities($_POST['user_phone']);
         $emailText = "Новое сообщение от PFP-лендинг \n <br> ========\n <br>";
         $emailText .= "Телефон: $user_phone\n"; 
-
 
         if(isset($_POST["whatsapp"])) {
             $whatsapp = htmlentities($_POST['whatsapp']);
@@ -32,17 +39,36 @@ if(isset($_POST["user_phone"])) {
         //file uploading
         if(isset($_FILES['file'])) {
             $client_file = '';
-            //TODO валидация файла
-
+            
             if ( 0 < $_FILES['file']['error'] ) {
-                $responseArray['message'] = 'File error ' . $_FILES['file']['error'];
-                echo $responseArray['message'];
-            // exit();
+                $responseArray = array('type' => 'error', 'message' => 'Error with file loading');
             }
+            // Если нет проблем с загрузкой
             else {
+                
+                // Нет проблем - проверяем тип               
                 switch ($_FILES['file']['type']) {
                     case 'application/pdf':
-                        //$newFilename .= '-document.pdf';
+                        $client_file = $_FILES['file']['name'];   
+                        break;
+
+                    case 'application/msword':
+                        $client_file = $_FILES['file']['name'];   
+                        break;
+
+                    case 'application/vnd.openxmlformats-officedocument.wordprocessingml.document':
+                        $client_file = $_FILES['file']['name'];   
+                        break;      
+                        
+                    case 'application/rtf':
+                        $client_file = $_FILES['file']['name'];   
+                        break;
+                        
+                    case 'text/richtext':
+                        $client_file = $_FILES['file']['name'];   
+                        break;
+                        
+                    case 'application/x-rtf':
                         $client_file = $_FILES['file']['name'];   
                         break;
 
@@ -57,31 +83,32 @@ if(isset($_POST["user_phone"])) {
                     case 'image/png':
                         $client_file = $_FILES['file']['name'];   
                         break;
+                        
 
                     case 'text/plain':
                         $client_file = $_FILES['file']['name'];   
                         break;    
 
                     default:
-                        //echo 'Файл неподдерживаемого типа';
-                        $responseArray = array('type' => 'bad_type', 'message' => 'Not supported file type');
-                        //echo $responseArray;
-                        //exit;
+                      $responseArray = array('type' => 'bad_type', 'message' => 'Not supported file type');
                 }
-
+   
+            }
+                
             
-
-                if($client_file) {
+            
+            if($client_file) {
+                //ПРоверяем размер
+                if($_FILES['file']['size'] > (10 * 1024 * 1024) ) {
+                    $responseArray = array('type' => 'bad_size', 'message' => 'Not supported file size');
+                }
+                //проверки пройдены - отправка
+                else {
+                    
                     move_uploaded_file($_FILES['file']['tmp_name'], '../uploads/' . $_FILES['file']['name']);
 
-
                     $emailText .= "Клиент прикрепил файл: $client_file\n <br>";
-    
-                    
                     $filename =  '../uploads/' . $_FILES['file']['name']; //Имя файла для прикрепления
-                    $to = "nastya-pavlova-93@yandex.ru"; //Кому
-                    $from = "anastasia-pavlova.com"; //От кого
-                    $subject = "Загрузка файла на сайте"; //Тема
                     $message = $emailText; //Текст письма
                     $boundary = "---"; //Разделитель
                     /* Заголовки */
@@ -104,30 +131,27 @@ if(isset($_POST["user_phone"])) {
                     $body .= chunk_split(base64_encode($text))."\n";
                     $body .= "--".$boundary ."--\n";
                     
-                    $sented_result = mail($to, $subject, $body, $headers); //Отправляем письмо
-    
-                    if($sented_result == 1) {
-                        $emailText .= 'File is sent, status: ' . $sented_result;
+
+                    $sented_result = mail($to, $subject, $body, $headers); //Отправляем письмо 1 
+                    $sented_result_two = mail($to_two, $subject, $body, $headers); //Отправляем письмо
+
+                    if($sented_result && $sented_result_two) {
+                        
                         $responseArray = array('type' => 'success', 'message' => $emailText);
-                        //echo $responseArray['message'];
+
                     }
                     else {
                         $errorMessage = 'ERROR: File is not sent, status: ' . $sented_result;
                         $responseArray = array('type' => 'danger', 'message' => $errorMessage);
-                        //echo $responseArray['message'];
                     }
-                    
-    
-                }
 
+                }  
+                
             }
             
         } 
         else {
-            $sendTo = 'nastya-pavlova-93@yandex.ru';
-            $subject = 'PFP-лендинг заявка';
-            $from = 'anastasia-pavlova.com';
-
+            
             $responseArray = array('type' => 'success', 'message' => $emailText);
 
             $headers = array('Content-Type: text/plain; charset="UTF-8";',
@@ -136,10 +160,8 @@ if(isset($_POST["user_phone"])) {
             'Return-Path: ' . $from,
             );
 
-
-        mail($sendTo, $subject, $emailText, implode("\n", $headers));
-
-        // $responseArray = array('type' => 'success', 'message' => $okMessage);
+            mail($to, $subject, $emailText, implode("\n", $headers));
+            mail($to_two, $subject, $emailText, implode("\n", $headers));
 
         }
 
@@ -148,6 +170,7 @@ if(isset($_POST["user_phone"])) {
     {
         $responseArray = array('type' => 'danger', 'message' => $errorMessage);
     }
+    // $responseArray = array('type' => 'danger', 'message' => 'empty POST');
 
     //Если данные пришли аяксом (xmlhttprequest)
     if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
@@ -159,16 +182,12 @@ if(isset($_POST["user_phone"])) {
     }
     else {
         //если нет
-        //echo $responseArray['message'];
         echo $responseArray;
     }
-
-  
 
 }
 else {
   $responseArray = array('type' => 'danger', 'message' => 'empty POST');
-  //echo $responseArray['message'];
   echo $responseArray;
 
 }

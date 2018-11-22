@@ -8,6 +8,79 @@ $(document).ready(function(){
   });
 
   /////////////////////////////////////
+  function checkFile() {
+    var file = document.getElementById("file").files[0];
+    var ext = "не определилось";
+      
+    if (!file) 
+      return 1;
+    var parts = file.name.split('.');
+    if (parts.length > 1) ext = parts.pop();
+
+    //console.log("Размер файла: " + file.size + " B",
+    //  "Расширение: " + ext,
+    //  "MIME тип: " + file.type);
+
+    var goodFile;
+
+    if(file.size > (10 * 1024 * 1024)) {
+      goodFile = 0;
+    }
+    else {
+      // Проверяем тип               
+    switch (file.type) {
+      case 'application/pdf': 
+          goodFile = 1;
+          break;
+
+      case 'application/msword':
+          goodFile = 1;
+          break;
+
+      case 'application/vnd.openxmlformats-officedocument.wordprocessingml.document':
+          goodFile = 1;  
+          break;      
+          
+      case 'application/rtf':
+          goodFile = 1;
+          break;
+          
+      case 'text/richtext':
+          goodFile = 1;
+          break;
+          
+      case 'application/x-rtf':
+          goodFile = 1; 
+          break;
+
+      case 'image/jpeg':
+          goodFile = 1;  
+          break;
+
+      case 'image/pjpeg':
+          goodFile = 1;   
+          break;
+
+      case 'image/png':
+          goodFile = 1; 
+          break;
+          
+
+      case 'text/plain':
+          goodFile = 1;
+          break;    
+
+      default:
+        goodFile = 0;
+    }
+
+    }
+
+      return goodFile;
+  }
+
+
+
   // Modal windows content manipulations
   $('.content__sent button.close').on("click", function(e) {
     e.preventDefault();
@@ -66,7 +139,7 @@ $(document).ready(function(){
   //Ajax answer handler 
   function showResponse(messageType, messageText, modal, form) {
     if(messageType == 'success') {
-      console.log("Данные отправлены \n" + messageText, messageType);
+     // console.log("Данные отправлены \n" + messageText, messageType);
 
       $(modal).find('.content').css({'display': 'none', 'transition': 'display .5s'});
       $(modal).find('.content__sent').css({'display': 'block', 'transition': 'display 1s'});
@@ -74,7 +147,7 @@ $(document).ready(function(){
       $(form)[0].reset();
     }
     else if(messageType == 'bad_type') {
-      console.log("Плохой тип файла \n" + messageText, messageType);
+     // console.log("Плохой тип файла \n" + messageText, messageType);
       $(modal).find('.content').css({'display': 'none', 'transition': 'display .5s'});
       $(modal).find('.fail').css({'display': 'block', 'transition': 'display 1s'});
       
@@ -84,7 +157,7 @@ $(document).ready(function(){
       //$('#project-form')[0].reset();
     }
     else if(messageType == 'bad_size') {
-      console.log("Большой размер файла \n" + messageText, messageType);
+     // console.log("Большой размер файла \n" + messageText, messageType);
       $(modal).find('.content').css({'display': 'none', 'transition': 'display .5s'});
       
       $(modal).find('.fail .modal-title').text('Превышен размер файла');
@@ -98,7 +171,7 @@ $(document).ready(function(){
       //$('#project-form')[0].reset();
     }
     else {
-      console.log("Не удалось отправить форму. \n" + messageText, messageType);
+    //  console.log("Не удалось отправить форму. \n" + messageText, messageType);
       $(modal).find('.fail .modal-title').text('Не удалось отправить форму.');
       $(modal).find('.fail .modal-subtitle').text('Попробуйте позже');
 
@@ -170,52 +243,68 @@ $(document).ready(function(){
       if(whatsapp)
         form_data.append('whatsapp', 'call');
 
-      $(form).fadeTo("fast", 0.15, function() {
-        console.log('freezed');
+        if(checkFile()) {
+          $(form).fadeTo("fast", 0.15, function() {
+            //console.log('freezed');
+          
+            $(this).find('.button').prop('disabled', true);
       
-        $(this).find('.button').prop('disabled', true);
-  
-      });
+          });
+        
+          $.ajax({
+            url: 'php/upload.php',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: form_data,
+            type: 'post',
+            success: function(response){
+                
+              var messageText = response.message;
+              var messageType = response.type;
     
+              
+      
+              showResponse(messageType, messageText, modal, form);
     
-      $.ajax({
-        url: 'php/upload.php',
-        cache: false,
-        contentType: false,
-        processData: false,
-        data: form_data,
-        type: 'post',
-        success: function(response){
-            
-          var messageText = response.message;
-          var messageType = response.type;
+              $(form).fadeTo("fast", 1, function() {
+                
+           
+                $(this).find('.button').prop('disabled', false);
+          
+              });
+                
+            },
+            error: function(response) { 
+              //console.log('Ошибка. Данные не отправлены.'+response.responseText);
+              /*** Вызываем окно ошибки */
+              showResponse('error', messageText, modal, form);
+    
+              $(form).fadeTo("fast", 1, function() {
+           
+                $(this).find('.button').prop('disabled', false);
+          
+              });
+          } 
+          });
+        }
+        else {
 
           
-  
-          showResponse(messageType, messageText, modal, form);
+          $(modal).find('.content').css({'display': 'none', 'transition': 'display .5s'});
+          
+          $(modal).find('.fail .modal-title').text('Пожалуйста, загрузите файл размером до 10 мб, формат: .doc, .docx, .rtf, .pdf или .jpeg, .jpg, .png');
+          //$(modal).find('.fail .modal-subtitle').text('Пожалуйста, выберите документ меньше 10 мегабайт');
 
-          $(form).fadeTo("fast", 1, function() {
-            
-       
-            $(this).find('.button').prop('disabled', false);
-      
-          });
-            
-        },
-        error: function(response) { 
-          console.log('Ошибка. Данные не отправлены.'+response.responseText);
-          /*** Вызываем окно ошибки */
-          showResponse('error', messageText, modal, form);
+          $(modal).find('.fail').css({'display': 'block', 'transition': 'display 1s'});
+          
+          $(form).find('label.user_phone').css({'color': '#ffffff'});
 
-          $(form).fadeTo("fast", 1, function() {
-       
-            $(this).find('.button').prop('disabled', false);
-      
-          });
-      } 
-      });
+          $(form)[0].reset();
 
-      
+        }
+
+    
       
     }
     else {
@@ -408,7 +497,7 @@ $(document).ready(function(){
           });
 
           if(messageType == 'success') {
-            console.log("Данные отправлены \n" + messageText, messageType);
+            //console.log("Данные отправлены \n" + messageText, messageType);
       
             $(form).find('label.user_email').css({'color': 'transparent'});
             $(form)[0].reset();
@@ -452,7 +541,7 @@ $(document).ready(function(){
             });
 
 
-            console.log('Ошибка. Данные не отправлены.'+response.responseText);
+            //console.log('Ошибка. Данные не отправлены.'+response.responseText);
             /*** Вызываем окно ошибки */
             $('#successModal').find('.fail .modal-title').text('Возникла ошибка.');
             $('#successModal').find('.fail .modal-subtitle').text('Попробуйте позже');
@@ -483,7 +572,7 @@ $(document).ready(function(){
 ////////////////////////////////
   $('.contact-form__call').on("click", function(e) {
     e.preventDefault();
-    console.log('contact-form call');
+    //console.log('contact-form call');
 
     var form = $(this).closest('form');
     var url = 'php/send.php';
@@ -541,7 +630,7 @@ $(document).ready(function(){
         },
   
         error: function(response) { // Данные не отправлены
-            console.log('Ошибка. Данные не отправлены.'+response.responseText);
+            //console.log('Ошибка. Данные не отправлены.'+response.responseText);
             /*** Вызываем окно ошибки */
             
             $('#successModal').find('.fail .modal-title').text('Возникла ошибка.');
@@ -574,7 +663,7 @@ $(document).ready(function(){
 
   $('.contact-form__whatsapp').on("click", function(e) {
     e.preventDefault();
-    console.log('contact-form whatsapp call');
+    //console.log('contact-form whatsapp call');
 
     var form = $(this).closest('form');
     var url = 'php/send.php';
@@ -600,7 +689,7 @@ $(document).ready(function(){
           var messageText = response.message;
 
           if(messageType == 'success') {
-            console.log("Данные отправлены \n" + messageText, messageType);
+            //console.log("Данные отправлены \n" + messageText, messageType);
       
             $(form).find('label.user_phone').css({'color': 'transparent'});
             $(form)[0].reset();
@@ -632,7 +721,7 @@ $(document).ready(function(){
         },
   
         error: function(response) { // Данные не отправлены
-            console.log('Ошибка. Данные не отправлены.'+response.responseText);
+           // console.log('Ошибка. Данные не отправлены.'+response.responseText);
             /*** Вызываем окно ошибки */
            
             $('#successModal').find('.fail .modal-title').text('Возникла ошибка.');
@@ -668,7 +757,7 @@ $(document).ready(function(){
 
 $('.uploadModal__call').on("click", function(e) {
   e.preventDefault();
-  console.log('modal upload call');
+  //console.log('modal upload call');
 
   var form = $(this).closest('form');
   var modal =  $(this).closest('#uploadModal');
@@ -682,7 +771,7 @@ $('.uploadModal__call').on("click", function(e) {
 
 $('.uploadModal__whatsapp').on("click", function(e) {
   e.preventDefault();
-  console.log('modal upload call');
+  //console.log('modal upload call');
 
   var form = $(this).closest('form');
   var modal =  $(this).closest('#uploadModal');
@@ -704,7 +793,7 @@ $('.uploadModal__whatsapp').on("click", function(e) {
     e.preventDefault();
 
     //e.preventDefault();
-    console.log('modal calc');
+    //console.log('modal calc');
 
 
     var form = $(this).closest('form');
@@ -722,7 +811,7 @@ $('.uploadModal__whatsapp').on("click", function(e) {
       var time = $('#calc-form').find('input#input_time').val();
       var remarkData = "calc";
 
-      console.log(square, baget, material, time, remarkData);
+      //console.log(square, baget, material, time, remarkData);
 
       form_data.append('user_phone', userPhone);
       form_data.append('options', remarkData);
@@ -782,7 +871,7 @@ $('.uploadModal__whatsapp').on("click", function(e) {
 
         },
         error: function(response) { // Данные не отправлены
-          console.log('Ошибка. Данные не отправлены.'+response.responseText);
+          //console.log('Ошибка. Данные не отправлены.'+response.responseText);
           /*** Вызываем окно ошибки */
           $(modal).find('.fail .modal-title').text('Не удалось отправить форму.');
           $(modal).find('.fail .modal-subtitle').text('Попробуйте позже');
@@ -830,7 +919,7 @@ $('.uploadModal__whatsapp').on("click", function(e) {
       var time = $('#calc-form').find('input#input_time').val();
       var remarkData = "calc";
 
-      console.log(square, baget, material, time, remarkData);
+      //console.log(square, baget, material, time, remarkData);
 
       form_data.append('user_phone', userPhone);
       form_data.append('options', remarkData);
@@ -891,7 +980,7 @@ $('.uploadModal__whatsapp').on("click", function(e) {
 
         },
         error: function(response) { // Данные не отправлены
-          console.log('Ошибка. Данные не отправлены.'+response.responseText);
+          //console.log('Ошибка. Данные не отправлены.'+response.responseText);
           /*** Вызываем окно ошибки */
           $(modal).find('.fail .modal-title').text('Не удалось отправить форму.');
           $(modal).find('.fail .modal-subtitle').text('Попробуйте позже');
@@ -931,7 +1020,7 @@ $('.uploadModal__whatsapp').on("click", function(e) {
   //Floors background tabs manipulations
   $(".floors-features .nav-link").click(
     function(){
-      console.log('tab-click ');
+      //console.log('tab-click ');
       var imgName = '';
       switch(this.id) {
         case 'floors-oil-tab':

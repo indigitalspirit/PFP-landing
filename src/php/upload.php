@@ -41,8 +41,7 @@ if(isset($_POST["user_phone"])) {
             $client_file = '';
             
             if ( 0 < $_FILES['file']['error'] ) {
-                $responseArray['message'] = 'File error ' . $_FILES['file']['error'];
-                echo $responseArray['message'];
+                $responseArray = array('type' => 'error', 'message' => 'Error with file loading');
             }
             // Если нет проблем с загрузкой
             else {
@@ -50,6 +49,26 @@ if(isset($_POST["user_phone"])) {
                 // Нет проблем - проверяем тип               
                 switch ($_FILES['file']['type']) {
                     case 'application/pdf':
+                        $client_file = $_FILES['file']['name'];   
+                        break;
+
+                    case 'application/msword':
+                        $client_file = $_FILES['file']['name'];   
+                        break;
+
+                    case 'application/vnd.openxmlformats-officedocument.wordprocessingml.document':
+                        $client_file = $_FILES['file']['name'];   
+                        break;      
+                        
+                    case 'application/rtf':
+                        $client_file = $_FILES['file']['name'];   
+                        break;
+                        
+                    case 'text/richtext':
+                        $client_file = $_FILES['file']['name'];   
+                        break;
+                        
+                    case 'application/x-rtf':
                         $client_file = $_FILES['file']['name'];   
                         break;
 
@@ -64,6 +83,7 @@ if(isset($_POST["user_phone"])) {
                     case 'image/png':
                         $client_file = $_FILES['file']['name'];   
                         break;
+                        
 
                     case 'text/plain':
                         $client_file = $_FILES['file']['name'];   
@@ -105,6 +125,7 @@ if(isset($_POST["user_phone"])) {
                     $text = fread($file, filesize($filename)); //Считываем весь файл
                     fclose($file); //Закрываем файл
                     /* Добавляем тип содержимого, кодируем текст файла и добавляем в тело письма */
+                    //Content-Type: image/jpeg;
                     $body .= "Content-Type: application/octet-stream; name==?utf-8?B?".base64_encode($filename)."?=\n"; 
                     $body .= "Content-Transfer-Encoding: base64\n";
                     $body .= "Content-Disposition: attachment; filename==?utf-8?B?".base64_encode($filename)."?=\n\n";
